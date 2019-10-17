@@ -1,0 +1,15 @@
+<view class='login_all'>
+        <view class='login_box'>
+          <view class='login_box_txb'>
+            <span><image src="https://www.jhjksp.com/img/ico_user.jpg" mode="widthFix" /></span>
+            <label><input type='text' placeholder='请输入用户名' /></label>
+          </view>
+          <view class='login_box_txb'>
+            <span><image src="https://www.jhjksp.com/img/ico_nock.jpg" mode="widthFix" /></span>
+            <label><input type='password' placeholder='请输入用密码' /></label>
+          </view>
+          <view class='login_box_btn'>
+            <Button>登录</Button>
+          </view>
+        </view>
+      </view>

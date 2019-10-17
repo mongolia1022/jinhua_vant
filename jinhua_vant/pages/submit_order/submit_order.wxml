@@ -1,0 +1,51 @@
+<!--pages/submit_order/submit_order.wxml-->
+<van-notice-bar
+  scrollable="false"
+  text="最低下单金额：1000元"
+/>
+<van-field value="" clearable label="备注信息" placeholder="请输入备注信息" />
+<view class='txb3'>
+  <span>开具发票</span>
+  <label><van-switch checked="{{ checkedInvoice }}" active-color="#ff645f" bind:change="onChangeInvoice" /></label>
+</view>
+
+<view class='need_invoice mgt_2vw' wx:if='{{isShowInvoice}}'>
+  <van-field value="" clearable label="发票类型" placeholder="请选择发票类型" />
+  <van-field value="" clearable label="识别号" placeholder="请输入纳税人识别号" />
+  <van-field value="{{invoice_price}}" clearable label="发票金额" placeholder="" readonly />
+  <van-field value="" type="textarea" autosize clearable label="发票抬头" placeholder="请输入发票抬头" />
+</view>
+
+<view class="order_coupon mgt_2vw clear">
+  <view class="order_coupon_l"><image src="https://www.jhjksp.com/img/coupon_pink.svg" mode='widthFix' ></image></view>
+  <view class="order_coupon_m">
+    <span>使用优惠券</span>
+    <label>暂无优惠券</label>
+  </view>
+  <view class="order_coupon_r iconfont icon-xiangzuo01-copy"></view>
+</view>
+
+<view class='txb3 mgt_2vw'>
+  <span>线下支付</span>
+  <label><van-switch checked="{{ checkedWechatPay }}" active-color="#ff645f" bind:change="onChangeWechatPay" /></label>
+</view>
+<view class="order_coupon clear" wx:if='{{isShowWechatPay}}'>
+  <view class="order_coupon_l"><image src="https://www.jhjksp.com/img/wechat_pay.svg" mode='widthFix' ></image></view>
+  <view class="order_coupon_m">
+    <span>微信支付</span>
+    <label>微信安全支付</label>
+  </view>
+  <view class="order_coupon_r iconfont">
+    <van-radio-group value="1">
+      <van-radio checked-color="#ff645f" name="1"></van-radio>
+    </van-radio-group>
+  </view>
+</view>
+
+<view class="bottom_pay">
+  <view class="bottom_pay_btn"><button>提交订单</button></view>
+  <view class="bottom_pay_r">
+    <span>合计：<font>￥</font><font class='total'>3000</font></span>
+    <label>共6种115件商品</label>
+  </view>
+</view>

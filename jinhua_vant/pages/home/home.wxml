@@ -1,0 +1,142 @@
+<!--搜索-->
+<van-search value="{{ value }}" placeholder="请输入搜索关键词" />
+
+<!--通知公告-->
+<van-notice-bar
+  left-icon="volume-o"
+  text="足协杯战线连续第2年上演广州德比战，上赛季半决赛上恒大以两回合5-3的总比分淘汰富力。"
+/>
+
+<!--banner-->
+<view class="swiper-container">
+  <swiper autoplay="auto" interval="5000" duration="500" current="{{swiperCurrent}}" bindchange="swiperChange" class="swiper"  style='height:{{Height}}'>
+    <block wx:for="{{slider}}" wx:key="unique">
+      <swiper-item>
+        <image src="{{item.picUrl}}" class="img" mode='widthFix' bindload='imgHeight' ></image>
+      </swiper-item>
+    </block>
+  </swiper>
+ 
+  <view class="dots">
+    <block wx:for="{{slider}}" wx:key="unique">
+      <view class="dot{{index == swiperCurrent ? ' active' : ''}}"></view>
+    </block>
+  </view>
+</view>
+
+<!--快速入口-->
+<swiper class="idx_entrance clear" indicator-dots='true' indicator-active-color='#ff645f'>
+    <block wx:key="unique2">
+    <swiper-item>
+      <li wx:for="{{quick_entrance}}">
+        <span class='circle' style='background-image:url({{item.proPicUrl}})'></span>
+        <label>{{item.proFont}}</label>
+      </li>
+    </swiper-item>
+    <swiper-item>
+      <li wx:for="{{quick_entrance2}}">
+        <span class='circle' style='background-image:url({{item.proPicUrl}})'></span>
+        <label>{{item.proFont}}</label>
+      </li>
+    </swiper-item>
+    </block>
+</swiper>
+ 
+<!--每日特惠-->
+<view class='idx_title'>
+  <em></em>
+  <span>每日特惠</span>
+  <span wx:for="{{listData}}" wx:key="id">
+    <font>{{item.countDownhh}}</font>:<font>{{item.countDownmm}}</font>:<font>{{item.countDownss}}</font>
+  </span>
+  <label class='pink'>大家都在抢<font><van-icon name="arrow" /></font></label>
+</view>
+
+<view class="idx_three_pro">
+  <ul class="clear">
+      <li>
+          <a href="商品详情.html">
+              <dt class="zoomImage" style="background-image:url(https://www.jhjksp.com/img/idx_three_pro.png);"></dt>
+              <dd class="title">正官庄 红参片</dd>
+              <dd class="price">
+                  <label>￥888.00</label>
+              </dd>
+          </a>
+      </li>
+      <li>
+          <a href="商品详情.html">
+              <dt class="zoomImage" style="background-image:url(https://www.jhjksp.com/img/idx_three_pro.png);"></dt>
+              <dd class="title">正官庄 红参片</dd>
+              <dd class="price">
+                  <label>￥888.00</label>
+              </dd>
+          </a>
+      </li>
+      <li>
+          <a href="商品详情.html">
+              <dt class="zoomImage" style="background-image:url(https://www.jhjksp.com/img/idx_three_pro.png);"></dt>
+              <dd class="title">正官庄 红参片</dd>
+              <dd class="price">
+                  <label>￥888.00</label>
+              </dd>
+          </a>
+      </li>
+      <li>
+          <a href="商品详情.html">
+              <dt class="zoomImage" style="background-image:url(https://www.jhjksp.com/img/idx_three_pro.png);"></dt>
+              <dd class="title">正官庄 红参片</dd>
+              <dd class="price">
+                  <label>￥888.00</label>
+              </dd>
+          </a>
+      </li>
+      <li>
+          <a href="商品详情.html">
+              <dt class="zoomImage" style="background-image:url(https://www.jhjksp.com/img/idx_three_pro.png);"></dt>
+              <dd class="title">正官庄 红参片</dd>
+              <dd class="price">
+                  <label>￥888.00</label>
+              </dd>
+          </a>
+      </li>
+      <li>
+          <a href="商品详情.html">
+              <dt class="zoomImage" style="background-image:url(https://www.jhjksp.com/img/idx_three_pro.png);"></dt>
+              <dd class="title">正官庄 红参片</dd>
+              <dd class="price">
+                  <label>￥888.00</label>
+              </dd>
+          </a>
+      </li>
+  </ul>
+</view>
+
+<!--底部导航-->
+<view class="height_50px"></view>
+<van-tabbar active="{{ active }}" bind:change="onChange">
+  <van-tabbar-item>
+    <image slot="icon" src="{{ nav_ico1.normal }}" mode="aspectFit" />
+    <image slot="icon-active" src="{{ nav_ico1.active }}" mode="aspectFit" />
+    首页
+  </van-tabbar-item>
+  <van-tabbar-item>
+    <image slot="icon" src="{{ nav_ico2.normal }}" mode="aspectFit" />
+    <image slot="icon-active" src="{{ nav_ico2.active }}" mode="aspectFit" />
+    分类
+  </van-tabbar-item>
+  <van-tabbar-item>
+    <image slot="icon" src="{{ nav_ico3.normal }}" mode="aspectFit" />
+    <image slot="icon-active" src="{{ nav_ico3.active }}" mode="aspectFit" />
+    订单
+  </van-tabbar-item>
+  <van-tabbar-item>
+    <image slot="icon" src="{{ nav_ico4.normal }}" mode="aspectFit" />
+    <image slot="icon-active" src="{{ nav_ico4.active }}" mode="aspectFit" />
+    购物车
+  </van-tabbar-item>
+  <van-tabbar-item>
+    <image slot="icon" src="{{ nav_ico5.normal }}" mode="aspectFit" />
+    <image slot="icon-active" src="{{ nav_ico5.active }}" mode="aspectFit" />
+    我的
+  </van-tabbar-item>
+</van-tabbar>

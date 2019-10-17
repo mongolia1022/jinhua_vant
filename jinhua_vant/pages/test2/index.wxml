@@ -1,0 +1,5 @@
+<van-cell title="展示弹出层" is-link bind:click="showPopup" />
+
+<van-popup show="{{ show }}" position="bottom" bind:close="onClose">
+
+</van-popup>

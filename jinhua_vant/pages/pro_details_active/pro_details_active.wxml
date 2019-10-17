@@ -1,0 +1,98 @@
+<!--banner-->
+<view class="swiper-container">
+  <swiper autoplay="auto" interval="5000" duration="500" current="{{swiperCurrent}}" bindchange="swiperChange" class="swiper"  style='height:{{Height}}'>
+    <block wx:for="{{slider}}" wx:key="unique">
+      <swiper-item>
+        <image src="{{item.picUrl}}" class="img" mode='widthFix' bindload='imgHeight' ></image>
+      </swiper-item>
+    </block>
+  </swiper>
+ 
+  <view class="dots">
+    <block wx:for="{{slider}}" wx:key="unique">
+      <view class="dot{{index == swiperCurrent ? ' active' : ''}}"></view>
+    </block>
+  </view>
+</view>
+
+
+<view class='pro_active_price'>
+          <view class='pro_price_font'><font>￥</font><span>300</span></view>
+          <view class='pro_price_label'><image src="https://www.jhjksp.com/img/ico_price_label.png" mode="widthFix" /></view>
+          <view class='pro_price_origin'><font>原价格</font><span>￥1800</span> </view>
+          <view class='pro_count'>
+            <view class='pro_count_t'>
+              <view>距活动结束仅剩</view>
+              <span wx:for="{{listData}}" wx:key="id">
+                <font>{{item.countDownhh}}</font>:<font>{{item.countDownmm}}</font>:<font>{{item.countDownss}}</font>
+              </span>
+            </view>
+          </view>
+        </view>
+<view class='pro_title'>丹麦蓝罐曲奇饼干礼盒装零食大礼包</view>
+
+<view class='txb_all'>
+  <View class='txb'>
+    <span>规格</span>
+    <label class='arrow iconfont' bind:click="showPopup">
+      <van-cell title="{{specs}}" bind:click="showPopup" />
+    </label>
+  </View>
+  <view class='txb'>
+    <span>库存</span>
+    <label>8000</label>
+  </view>
+</view>
+
+<view class='txb_all'>
+  <view class='txb'>
+    <span>产地</span>
+    <label>中国福建</label>
+  </view>
+  <view class='txb'>
+    <span>多条码</span>
+    <label>4897056000513</label>
+  </view>
+  <view class='txb'>
+    <span>有效期</span>
+    <label>生产:2019-09-09   到期:2020-09-09</label>
+  </view>
+</view>
+
+<view class='pro_details'>
+  <view class='pro_details_t'>
+    <font class='iconfont icon-shouyemokuaifengetubiao-zuo'></font>
+    <span>商品详情</span>
+    <font class='iconfont icon-shouyemokuaifengetubiao-you'></font>
+  </view>
+  <view class='pro_details_b'>
+    <image src="https://www.jhjksp.com/img/pro_details.jpg" mode="widthFix" />
+  </view>
+</view>
+
+<view class='height_13vw'></view>
+<view class='bottom_buy clear'>
+  <view class='bottom_buy_l'>
+    <ul class='clear'>
+      <li>
+        <span class='iconfont icon-shouye4'></span>
+        <label>首页</label>
+      </li>
+      <li>
+        <view class="cart_nume circle">1</view>
+        <span class='iconfont icon-gouwuche2'></span>
+        <label>购物车</label>
+      </li>
+    </ul>
+  </view>
+  <view class='bottom_buy_btn'>
+    <Button class='cart'>加入购物车</Button>
+    <Button class='buy'>立即购买</Button>
+  </view>
+</view>
+
+<!--弹出规格-->
+<van-popup show="{{ show }}" bind:close="onClose" position="bottom">
+  <van-picker show-toolbar title="标题" columns="{{ columns }}" bind:cancel="onCancel" bind:confirm="onConfirm" />
+</van-popup>
+

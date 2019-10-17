@@ -1,0 +1,5 @@
+
+page{background: #fff;}
+
+.arealist .van-cell__title{float: left; text-align: left; width: 90px; display: block; flex: none; -webkit-flex: none;}
+.arealist .van-cell__value {float: left; text-align: left; display: block;}

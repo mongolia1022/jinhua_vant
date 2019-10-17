@@ -1,0 +1,14 @@
+<van-field value="" clearable label="公司名称" placeholder="公司名称" />
+<van-field value="" clearable label="姓　　名" placeholder="收货人姓名" />
+<van-field value="" clearable label="电　　话" placeholder="收货人手机号" />
+<van-cell class='arealist' title="收货地区" value="{{setArea}}" bind:click="showPopup" />
+<van-field value="" clearable label="收货地址" type="textarea" autosize placeholder="街道门牌、楼层房间号等信息" />
+
+<view class="btns pdt_10vw">
+  <van-button type="primary" size="large" round>保存</van-button>
+</view>
+
+
+<van-popup show="{{ show }}" position="bottom" bind:close="onClose">
+  <van-area area-list="{{ areaList }}" bind:cancel="onCancel" bind:confirm="onConfirm"/>
+</van-popup> 
