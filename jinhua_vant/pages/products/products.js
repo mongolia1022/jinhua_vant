@@ -1,4 +1,6 @@
 // pages/products/products.js
+const util = require('../../utils/util.js');
+
 Page({
   
   /**
@@ -9,11 +11,7 @@ Page({
     show: false,
     selectNum:'',
     columns: ['2', '4', '6', '8', '10'],
-    proClass: [
-      { proClassName: '分类1' },
-      { proClassName: '分类2' },
-      { proClassName: '分类3' },
-    ],
+    proClass: [],
 
     //底部导航
     active: 1,
@@ -38,6 +36,15 @@ Page({
       active: 'https://www.jhjksp.com/img/nav5_2.png'
     }
   },
+    /*获取产品一级分类*/
+    fillCatListOne() {
+        util.post('/index/cat_list_one').then(data=>{
+          data.body.list.map(item=>{
+              this.data.proClass.push({proClassName:item.FullName});
+          });
+          console.log(this.data.proClass);
+        })
+    },
   /*tab*/
   onChange(event) {
     //底部导航
@@ -72,38 +79,12 @@ Page({
     });
     this.setData({ show: false });
   },
-  /*获取产品一级分类*/
-  getClassName() {
-    var data = this.data;
-    wx.request({
-      url: 'https://www.jhjksp.com/index/cat_list_one',
-      method: 'GET',
-      header: {
-        'content-type': 'application/json'
-      },
-      success(res) {
-        var className = res.data.body.list;
-        for (var i = 0, len = className.length; i < len; i++) {
-          if (className[i].leveal == '1') {
-            console.log(className[i].FullName);//遍历输出
-            var newarray = [{
-              proClassName: className[i].FullName
-            }];
 
-            data.proClass.push(i, className[i].FullName);
-          }
-        }
-      },
-      fail(err) {
-        console.log('aaa')
-      },
-    })
-  },
   /**
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {    
-    this.getClassName()
+    this.fillCatListOne()
   },
 
   /**

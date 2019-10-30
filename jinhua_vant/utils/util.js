@@ -14,6 +14,86 @@ const formatNumber = n => {
   return n[1] ? n : '0' + n
 }
 
+function isHttpSuccess(status) {
+    return status >= 200 && status < 300 || status === 304;
+}
+
+function post(url, data={},header={ 'content-type': 'application/json' }) {
+    const app = getApp()
+    const publicParams = {}
+    const datas = Object.assign(publicParams,data)
+
+    const promise = new Promise(function (resolve, reject, defaults) {
+        console.log(`${url}-requestData:%o`,datas)
+        wx.request({
+            url: app.globalData.url + url,
+            data: datas,
+            method: "POST",
+            header: header,
+            success: (r) => {
+                const isSuccess = isHttpSuccess(r.statusCode);
+                if (isSuccess) {
+                    console.log(`${url}-responseData:%o`,r.data);
+                    resolve(r.data);
+                } else {
+                    console.log(`${url}-error:${r}`);
+                    reject({
+                        msg: `error:${r.statusCode}`,
+                        detail: r
+                    });
+                }
+            },
+            fail: (e)=>{
+                console.log(`${url}-exception:%o`,e)
+                reject({
+                    msg: 'exception',
+                    detail: e
+                });
+            },
+            complete: defaults,
+        })
+    });
+    return promise;
+}
+
+function get(url,header={ 'content-type': 'application/json'}){
+    const app = getApp()
+    const publicParams = {}
+    const datas = Object.assign(publicParams,data)
+
+    const promise = new Promise(function (resolve, reject, defaults) {
+        console.log(`${url}-request`)
+        wx.request({
+            url: app.globalData.url + url,
+            data: datas,
+            method: "GET",
+            header: header,
+            success: (r) => {
+                const isSuccess = isHttpSuccess(r.statusCode);
+                if (isSuccess) {
+                    console.log(`${url}-responseData:${r.data}`);
+                    resolve(r.data);
+                } else {
+                    console.log(`${url}-error:${r}`);
+                    reject({
+                        msg: `error:${r.statusCode}`,
+                        detail: r
+                    });
+                }
+            },
+            fail: (e)=>{
+                console.log(`${url}-exception:${e}`)
+                reject({
+                    msg: 'exception',
+                    detail: e
+                });
+            },
+            complete: defaults,
+        })
+    });
+    return promise;
+}
+
 module.exports = {
-  formatTime: formatTime
+  formatTime: formatTime, post:post,get:get
 }
