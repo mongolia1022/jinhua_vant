@@ -28,7 +28,7 @@
         </dl>
       </view>
       <view class="order_btns">
-        <button class="pay">立即支付</button>
+        <button class="pay" style="display=none">立即支付</button>
         <button>查看发票</button>
         <button>再次购买</button>
       </view>
@@ -38,7 +38,7 @@
       </view>
     </view>
 
-    <view class='my_order'>
+    <view class='my_order'  bind:tap='toSubmitOrder'>
       <view class='my_order_code'>
         <view class='my_order_code'>68-O-2019-08-09-0003</view>
         <view class='my_order_time'>2019-09-09 12:00:00</view>

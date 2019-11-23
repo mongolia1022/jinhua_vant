@@ -1,5 +1,9 @@
 // pages/home/home.js
 Page({
+  /*页面跳转*/
+  toDiscount: function (options){
+    wx.navigateTo({ url: '../discount/discount' })
+  },
 
   /**
    * 页面的初始数据
@@ -11,28 +15,26 @@ Page({
       { picUrl: 'https://www.jhjksp.com/img/banner.jpg' },
     ],
     quick_entrance: [
-      { proPicUrl: 'https://www.jhjksp.com/img/banner.jpg', proFont: '分类名' },
-      { proPicUrl: 'https://www.jhjksp.com/img/banner.jpg', proFont: '分类名' },
-      { proPicUrl: 'https://www.jhjksp.com/img/banner.jpg', proFont: '分类名' },
-      { proPicUrl: 'https://www.jhjksp.com/img/banner.jpg', proFont: '分类名' },
-      { proPicUrl: 'https://www.jhjksp.com/img/banner.jpg', proFont: '分类名' },
-      { proPicUrl: 'https://www.jhjksp.com/img/banner.jpg', proFont: '分类名' },
-      { proPicUrl: 'https://www.jhjksp.com/img/banner.jpg', proFont: '分类名' },
-      { proPicUrl: 'https://www.jhjksp.com/img/banner.jpg', proFont: '分类名' },
-      { proPicUrl: 'https://www.jhjksp.com/img/banner.jpg', proFont: '分类名' },
-      { proPicUrl: 'https://www.jhjksp.com/img/banner.jpg', proFont: '分类名' },
-    ],
+      { proPicUrl: 'https://www.jhjksp.com/img/et1.jpg', proFont: '饼干类别' },
+      { proPicUrl: 'https://www.jhjksp.com/img/et2.jpg', proFont: '蛋卷类别' },
+      { proPicUrl: 'https://www.jhjksp.com/img/et3.jpg', proFont: '糕点类别' },
+      { proPicUrl: 'https://www.jhjksp.com/img/et4.jpg', proFont: '膨化类别' },
+      { proPicUrl: 'https://www.jhjksp.com/img/et5.jpg', proFont: '糖果类别' },
+      { proPicUrl: 'https://www.jhjksp.com/img/et6.jpg', proFont: '巧克力类' },
+      { proPicUrl: 'https://www.jhjksp.com/img/et7.jpg', proFont: '干果豆类' },
+      { proPicUrl: 'https://www.jhjksp.com/img/et8.jpg', proFont: '果脯蜜饯' },
+      { proPicUrl: 'https://www.jhjksp.com/img/et9.jpg', proFont: '海苔紫菜' },
+      { proPicUrl: 'https://www.jhjksp.com/img/et10.jpg', proFont: '肉脯类别' },
+    ], 
     quick_entrance2: [
-      { proPicUrl: 'https://www.jhjksp.com/img/banner.jpg', proFont: '分类名2' },
-      { proPicUrl: 'https://www.jhjksp.com/img/banner.jpg', proFont: '分类名2' },
-      { proPicUrl: 'https://www.jhjksp.com/img/banner.jpg', proFont: '分类名2' },
-      { proPicUrl: 'https://www.jhjksp.com/img/banner.jpg', proFont: '分类名2' },
-      { proPicUrl: 'https://www.jhjksp.com/img/banner.jpg', proFont: '分类名2' },
-      { proPicUrl: 'https://www.jhjksp.com/img/banner.jpg', proFont: '分类名2' },
-      { proPicUrl: 'https://www.jhjksp.com/img/banner.jpg', proFont: '分类名2' },
-      { proPicUrl: 'https://www.jhjksp.com/img/banner.jpg', proFont: '分类名2' },
-      { proPicUrl: 'https://www.jhjksp.com/img/banner.jpg', proFont: '分类名2' },
-      { proPicUrl: 'https://www.jhjksp.com/img/banner.jpg', proFont: '分类名2' },
+      { proPicUrl: 'https://www.jhjksp.com/img/et11.jpg', proFont: '饮料牛奶' },
+      { proPicUrl: 'https://www.jhjksp.com/img/et12.jpg', proFont: '冲调饮品' },
+      { proPicUrl: 'https://www.jhjksp.com/img/et13.jpg', proFont: '果冻布丁' },
+      { proPicUrl: 'https://www.jhjksp.com/img/et14.jpg', proFont: '粉面类别' },
+      { proPicUrl: 'https://www.jhjksp.com/img/et15.jpg', proFont: '赠品类别' },
+      { proPicUrl: 'https://www.jhjksp.com/img/et16.jpg', proFont: '调味品类' },
+      { proPicUrl: 'https://www.jhjksp.com/img/et17.jpg', proFont: '节日礼品' },
+      { proPicUrl: 'https://www.jhjksp.com/img/et18.jpg', proFont: '进口酒类' },
     ],
     swiperCurrent: 0,
     Height: "",    //这是swiper要动态设置的高度属性
@@ -65,8 +67,20 @@ Page({
   /*底部导航*/
   onChange(event) {
     console.log(event.detail);
+    if (event.detail == 0) {
+      wx.navigateTo({ url: '../home/home' })
+    }
     if (event.detail == 1) {
-      wx.navigateTo({ url: '../test/test' })
+      wx.navigateTo({ url: '../products/products' })
+    }
+    if (event.detail == 2) {
+      wx.navigateTo({ url: '../my_order/my_order' })
+    }
+    if (event.detail == 3) {
+      wx.navigateTo({ url: '../cart/cart' })
+    }
+    if (event.detail == 4) {
+      wx.navigateTo({ url: '../mine/mine' })
     }
   },
 

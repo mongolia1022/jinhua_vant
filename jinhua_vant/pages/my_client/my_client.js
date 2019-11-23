@@ -1,6 +1,9 @@
 // pages/my_client/my_client.js
 Page({
 
+  toCustomerInfo: function (options) {
+    wx.navigateTo({ url: '../customer_info/customer_info' })
+  },
   /**
    * 页面的初始数据
    */

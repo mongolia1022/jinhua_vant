@@ -1,9 +1,15 @@
 <van-tabs active="{{ tabActive }}" bind:change="onChange">
-  <van-tab wx:for="{{proClass}}" title="{{item.FullName}}">
-    <view class='brand_select iconfont icon-shaixuan2'>全部品牌</view>
+  <van-tab wx:for="{{proClass}}" title="{{item.proClassName}}">
+    <view class='brand_select iconfont icon-shaixuan2' bindtap="toShowBrand">{{barndName}}</view>
     <view class='product_list'>
       <dl class='clear'>
-        <dt style="background-image:url(https://www.jhjksp.com/img/idx_three_pro.png);"></dt>
+        <dt style="background-image:url(https://www.jhjksp.com/img/idx_three_pro.png);"  bind:tap='toProDetails'>
+          <van-transition show="{{ animateShow }}" name="fade-up" >
+            <view class='smile'>
+              <span class='iconfont icon-xiaolian3 circle'></span>
+            </view>
+          </van-transition>
+        </dt>
         <dd class='title'>奥利奥巧脆卷</dd>
         <dd class='details'>100g*24 /箱 库存充足</dd>
         <dd class='price clear'>
@@ -26,7 +32,7 @@
   </van-tab>
 </van-tabs>
 
-
+<!--选择数量-->
 <van-popup show="{{ show }}" position="bottom" bind:close="onClose">
   <van-picker show-toolbar title="请选择数量" columns="{{ columns }}" bind:cancel="onCancel" bind:confirm="onConfirm" />
 </van-popup>
@@ -60,3 +66,20 @@
     我的
   </van-tabbar-item>
 </van-tabbar>
+
+<!--品牌分类-->
+<view class="show_brand" wx:if="{{showBrand}}">
+  <view class='brand_select2 iconfont icon-fenleiheise'> 品牌分类</view>
+   <view class="close iconfont icon-guanbi"  bindtap="toShowBrand"></view>
+  <view class="height_12vw"></view>
+  <view class="barnds">
+    <ul>
+      <li class="{{_num == 0?'now':'option'}}" data-num = "0" bindtap="clickNum" data-text="全部品牌">全部品牌</li>
+      <li class="{{_num == 1?'now':'option'}}" data-num = "1" bindtap="clickNum" data-text="品牌名称1">品牌名称1</li>
+      <li class="{{_num == 2?'now':'option'}}" data-num = "2" bindtap="clickNum" data-text="品牌名称2">品牌名称2</li>
+      <li class="{{_num == 3?'now':'option'}}" data-num = "3" bindtap="clickNum" data-text="品牌名称3">品牌名称3</li>
+      <li class="{{_num == 4?'now':'option'}}" data-num = "4" bindtap="clickNum" data-text="品牌名称4">品牌名称4</li>
+      <li class="{{_num == 5?'now':'option'}}" data-num = "5" bindtap="clickNum" data-text="品牌名称5">品牌名称5</li>
+    </ul>
+  </view>
+</view>

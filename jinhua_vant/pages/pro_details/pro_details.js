@@ -1,6 +1,4 @@
 // pages/pro_details/pro_details.js
-const util = require('../../utils/util.js');
-
 Page({
 
   /**
@@ -20,16 +18,9 @@ Page({
     show: false,
 
     //选择规格
-      good:{},
     specs: '500g*15包/箱',
     columns: ['500g*15包/箱', '600g*15包/箱', '700g*15包/箱', '800g*15包/箱', '900g*15包/箱']
   },
-    /*获取产品一级分类*/
-    getGood(id) {
-        util.get(`/goods_info?ptypeId=${id}`).then(data=>{
-
-        });
-    },
   /*banner*/
   swiperChange: function (e) {
     this.setData({
@@ -84,7 +75,7 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-      this.getGood('000180000100001');
+
   },
 
   /**

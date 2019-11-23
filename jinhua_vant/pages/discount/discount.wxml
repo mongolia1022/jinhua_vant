@@ -1,0 +1,134 @@
+<view class='discount_t'>
+  <span class='circle iconfont icon-shandian-shi'></span>
+  <label>大家都正在狂抢</label>
+</view>
+
+<view class='discount_count'>
+  <span wx:for="{{listData}}" wx:key="id">
+    距结束 <font>{{item.countDownhh}}</font>:<font>{{item.countDownmm}}</font>:<font>{{item.countDownss}}</font>
+  </span>
+</view>
+
+<view class='product_list' bind:tap='toProDetailsActive'>
+  <dl class='clear'>
+    <dt style="background-image:url(https://www.jhjksp.com/img/idx_three_pro.png);"></dt>
+    <dd class='title'>奥利奥巧脆卷</dd>
+    <dd class='details'>100g*24 /箱 库存充足</dd>
+    <dd class='price clear'>
+      <span>￥</span>
+      <label>1800</label>
+      <em>￥3000</em>
+      <view class="discount_btn">
+        <button>马上抢<font class='iconfont icon-next_2'></font></button>
+      </view>
+    </dd>
+    <dd class='coupon'>
+      <span>满赠</span>
+    </dd>
+    <dd class='gray_font clear'>
+      <span>生产:2019-09-09 到期:2020-09-09</span>
+      <label>单位:包</label>
+      <span class='active_details'>特价:16元/盒（门店必须做零售价:19.9元/盒活动）</span>
+    </dd>
+  </dl>
+</view>
+
+
+<view class='product_list'>
+  <dl class='clear'>
+    <dt style="background-image:url(https://www.jhjksp.com/img/idx_three_pro.png);"></dt>
+    <dd class='title'>奥利奥巧脆卷</dd>
+    <dd class='details'>100g*24 /箱 库存充足</dd>
+    <dd class='price clear'>
+      <span>￥</span>
+      <label>1800</label>
+      <em>￥3000</em>
+      <view class="discount_btn">
+        <button>马上抢<font class='iconfont icon-next_2'></font></button>
+      </view>
+    </dd>
+    <dd class='coupon'>
+      <span>满赠</span>
+    </dd>
+    <dd class='gray_font clear'>
+      <span>生产:2019-09-09 到期:2020-09-09</span>
+      <label>单位:包</label>
+      <span class='active_details'>特价:16元/盒（门店必须做零售价:19.9元/盒活动）</span>
+    </dd>
+  </dl>
+</view>
+
+
+<view class='product_list'>
+  <dl class='clear'>
+    <dt style="background-image:url(https://www.jhjksp.com/img/idx_three_pro.png);"></dt>
+    <dd class='title'>奥利奥巧脆卷</dd>
+    <dd class='details'>100g*24 /箱 库存充足</dd>
+    <dd class='price clear'>
+      <span>￥</span>
+      <label>1800</label>
+      <em>￥3000</em>
+      <view class="discount_btn">
+        <button>马上抢<font class='iconfont icon-next_2'></font></button>
+      </view>
+    </dd>
+    <dd class='coupon'>
+      <span>满赠</span>
+    </dd>
+    <dd class='gray_font clear'>
+      <span>生产:2019-09-09 到期:2020-09-09</span>
+      <label>单位:包</label>
+      <span class='active_details'>特价:16元/盒（门店必须做零售价:19.9元/盒活动）</span>
+    </dd>
+  </dl>
+</view>
+
+
+<view class='product_list'>
+  <dl class='clear'>
+    <dt style="background-image:url(https://www.jhjksp.com/img/idx_three_pro.png);"></dt>
+    <dd class='title'>奥利奥巧脆卷</dd>
+    <dd class='details'>100g*24 /箱 库存充足</dd>
+    <dd class='price clear'>
+      <span>￥</span>
+      <label>1800</label>
+      <em>￥3000</em>
+      <view class="discount_btn">
+        <button>马上抢<font class='iconfont icon-next_2'></font></button>
+      </view>
+    </dd>
+    <dd class='coupon'>
+      <span>满赠</span>
+    </dd>
+    <dd class='gray_font clear'>
+      <span>生产:2019-09-09 到期:2020-09-09</span>
+      <label>单位:包</label>
+      <span class='active_details'>特价:16元/盒（门店必须做零售价:19.9元/盒活动）</span>
+    </dd>
+  </dl>
+</view>
+
+
+<view class='product_list'>
+  <dl class='clear'>
+    <dt style="background-image:url(https://www.jhjksp.com/img/idx_three_pro.png);"></dt>
+    <dd class='title'>奥利奥巧脆卷</dd>
+    <dd class='details'>100g*24 /箱 库存充足</dd>
+    <dd class='price clear'>
+      <span>￥</span>
+      <label>1800</label>
+      <em>￥3000</em>
+      <view class="discount_btn">
+        <button>马上抢<font class='iconfont icon-next_2'></font></button>
+      </view>
+    </dd>
+    <dd class='coupon'>
+      <span>满赠</span>
+    </dd>
+    <dd class='gray_font clear'>
+      <span>生产:2019-09-09 到期:2020-09-09</span>
+      <label>单位:包</label>
+      <span class='active_details'>特价:16元/盒（门店必须做零售价:19.9元/盒活动）</span>
+    </dd>
+  </dl>
+</view>

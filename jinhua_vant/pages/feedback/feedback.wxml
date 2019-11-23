@@ -1,0 +1,21 @@
+
+<van-notice-bar
+  scrollable="false"
+  text="如有任何意见与建议，欢迎您的留言！"
+/>
+
+<van-cell-group>
+  <van-field value="" clearable label="标题" placeholder="请输入标题" />
+  <van-field
+    value=""
+    label="留言"
+    type="textarea"
+    placeholder="请输入留言"
+    autosize
+  />
+</van-cell-group>
+
+<view class="btns pdt_10vw">
+  <van-button type="primary" size="large" round>提交</van-button>
+  <van-button plain type="danger" size="large" round>取消</van-button>
+</view>

@@ -1,9 +1,6 @@
-// pages/my_address/my_address.js
+// pages/feedback/feedback.js
 Page({
 
-  toEditAddress: function (options) {
-    wx.navigateTo({ url: '../edit_address/edit_address' })
-  },
   /**
    * 页面的初始数据
    */

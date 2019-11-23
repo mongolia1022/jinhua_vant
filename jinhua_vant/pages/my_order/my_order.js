@@ -1,6 +1,11 @@
 // pages/products/products.js
 Page({
 
+  /*页面跳转*/
+  toSubmitOrder: function (options) {
+    wx.navigateTo({ url: '../submit_order/submit_order' })
+  },
+
   /**
    * 页面的初始数据
    */
@@ -38,12 +43,23 @@ Page({
       active: 'https://www.jhjksp.com/img/nav5_2.png'
     }
   },
-  /*tab*/
+  /*底部导航*/
   onChange(event) {
-    //底部导航
     console.log(event.detail);
+    if (event.detail == 0) {
+      wx.navigateTo({ url: '../home/home' })
+    }
+    if (event.detail == 1) {
+      wx.navigateTo({ url: '../products/products' })
+    }
     if (event.detail == 2) {
-      wx.navigateTo({ url: '../test/test' })
+      wx.navigateTo({ url: '../my_order/my_order' })
+    }
+    if (event.detail == 3) {
+      wx.navigateTo({ url: '../cart/cart' })
+    }
+    if (event.detail == 4) {
+      wx.navigateTo({ url: '../mine/mine' })
     }
   },
 

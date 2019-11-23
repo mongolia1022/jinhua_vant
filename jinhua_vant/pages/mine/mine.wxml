@@ -22,15 +22,19 @@
     </li>
     <li class='iconfont'>
       <span><image src="https://www.jhjksp.com/img/mine_dot2.png" mode="widthFix" /></span>
-      <label>服务热线</label>
+      <label>我的优惠</label>
     </li>
-    <li class='iconfont'>
+    <li class='iconfont'  bind:tap='toFeedback'>
       <span><image src="https://www.jhjksp.com/img/mine_dot3.png" mode="widthFix" /></span>
-      <label>服务热线</label>
+      <label>意见反馈</label>
     </li>
-    <li class='iconfont'>
+    <li class='iconfont'  bind:tap='toMyAddress'>
       <span><image src="https://www.jhjksp.com/img/mine_dot4.png" mode="widthFix" /></span>
-      <label>服务热线</label>
+      <label>我的地址</label>
+    </li>
+    <li class='iconfont'  bind:tap='toMyClient'>
+      <span><image src="https://www.jhjksp.com/img/mine_dot5.png" mode="widthFix" /></span>
+      <label>我的客户</label>
     </li>
   </ul>
 </view>

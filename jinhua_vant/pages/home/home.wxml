@@ -43,7 +43,7 @@
 </swiper>
  
 <!--每日特惠-->
-<view class='idx_title'>
+<view class='idx_title' bind:tap='toDiscount'>
   <em></em>
   <span>每日特惠</span>
   <span wx:for="{{listData}}" wx:key="id">
@@ -56,8 +56,8 @@
   <ul class="clear">
       <li>
           <a href="商品详情.html">
-              <dt class="zoomImage" style="background-image:url(https://www.jhjksp.com/img/idx_three_pro.png);"></dt>
-              <dd class="title">正官庄 红参片</dd>
+              <dt class="zoomImage" style="background-image:url(https://www.jhjksp.com/img/idx_three_pro.jpg);"></dt>
+              <dd class="title">老布特木糖醇酥</dd>
               <dd class="price">
                   <label>￥888.00</label>
               </dd>
@@ -65,8 +65,8 @@
       </li>
       <li>
           <a href="商品详情.html">
-              <dt class="zoomImage" style="background-image:url(https://www.jhjksp.com/img/idx_three_pro.png);"></dt>
-              <dd class="title">正官庄 红参片</dd>
+              <dt class="zoomImage" style="background-image:url(https://www.jhjksp.com/img/idx_three_pro2.jpg);"></dt>
+              <dd class="title">丹麦蓝罐曲奇</dd>
               <dd class="price">
                   <label>￥888.00</label>
               </dd>
@@ -74,8 +74,8 @@
       </li>
       <li>
           <a href="商品详情.html">
-              <dt class="zoomImage" style="background-image:url(https://www.jhjksp.com/img/idx_three_pro.png);"></dt>
-              <dd class="title">正官庄 红参片</dd>
+              <dt class="zoomImage" style="background-image:url(https://www.jhjksp.com/img/idx_three_pro3.jpg);"></dt>
+              <dd class="title">小老板面包干</dd>
               <dd class="price">
                   <label>￥888.00</label>
               </dd>
@@ -83,8 +83,8 @@
       </li>
       <li>
           <a href="商品详情.html">
-              <dt class="zoomImage" style="background-image:url(https://www.jhjksp.com/img/idx_three_pro.png);"></dt>
-              <dd class="title">正官庄 红参片</dd>
+              <dt class="zoomImage" style="background-image:url(https://www.jhjksp.com/img/idx_three_pro.jpg);"></dt>
+              <dd class="title">老布特木糖醇酥</dd>
               <dd class="price">
                   <label>￥888.00</label>
               </dd>
@@ -92,8 +92,8 @@
       </li>
       <li>
           <a href="商品详情.html">
-              <dt class="zoomImage" style="background-image:url(https://www.jhjksp.com/img/idx_three_pro.png);"></dt>
-              <dd class="title">正官庄 红参片</dd>
+              <dt class="zoomImage" style="background-image:url(https://www.jhjksp.com/img/idx_three_pro2.jpg);"></dt>
+              <dd class="title">丹麦蓝罐曲奇</dd>
               <dd class="price">
                   <label>￥888.00</label>
               </dd>
@@ -101,8 +101,125 @@
       </li>
       <li>
           <a href="商品详情.html">
-              <dt class="zoomImage" style="background-image:url(https://www.jhjksp.com/img/idx_three_pro.png);"></dt>
-              <dd class="title">正官庄 红参片</dd>
+              <dt class="zoomImage" style="background-image:url(https://www.jhjksp.com/img/idx_three_pro3.jpg);"></dt>
+              <dd class="title">小老板面包干</dd>
+              <dd class="price">
+                  <label>￥888.00</label>
+              </dd>
+          </a>
+      </li>
+  </ul>
+</view>
+
+<!--促销商品-->
+<view class='idx_title'>
+  <em></em>
+  <span>促销商品</span>
+  <label><font><van-icon name="arrow" /></font></label>
+</view>
+<view class="idx_av clear"> <image src="https://www.jhjksp.com/img/ad2.jpg" mode='widthFix' /> </view>
+<view class="idx_three_pro">
+  <ul class="clear">
+      <li>
+          <a href="商品详情.html">
+              <dt class="zoomImage" style="background-image:url(https://www.jhjksp.com/img/idx_three_pro.jpg);"></dt>
+              <dd class="title">老布特木糖醇酥</dd>
+              <dd class="price">
+                  <label>￥888.00</label>
+              </dd>
+          </a>
+      </li>
+      <li>
+          <a href="商品详情.html">
+              <dt class="zoomImage" style="background-image:url(https://www.jhjksp.com/img/idx_three_pro2.jpg);"></dt>
+              <dd class="title">丹麦蓝罐曲奇</dd>
+              <dd class="price">
+                  <label>￥888.00</label>
+              </dd>
+          </a>
+      </li>
+      <li>
+          <a href="商品详情.html">
+              <dt class="zoomImage" style="background-image:url(https://www.jhjksp.com/img/idx_three_pro3.jpg);"></dt>
+              <dd class="title">小老板面包干</dd>
+              <dd class="price">
+                  <label>￥888.00</label>
+              </dd>
+          </a>
+      </li>
+  </ul>
+</view>
+
+<!--收藏合集-->
+<view class='idx_title'>
+  <em></em>
+  <span>收藏合集</span>
+  <label><font><van-icon name="arrow" /></font></label>
+</view>
+<view class="idx_av clear"> <image src="https://www.jhjksp.com/img/ad3.jpg" mode='widthFix' /> </view>
+<view class="idx_three_pro">
+  <ul class="clear">
+      <li>
+          <a href="商品详情.html">
+              <dt class="zoomImage" style="background-image:url(https://www.jhjksp.com/img/idx_three_pro.jpg);"></dt>
+              <dd class="title">老布特木糖醇酥</dd>
+              <dd class="price">
+                  <label>￥888.00</label>
+              </dd>
+          </a>
+      </li>
+      <li>
+          <a href="商品详情.html">
+              <dt class="zoomImage" style="background-image:url(https://www.jhjksp.com/img/idx_three_pro2.jpg);"></dt>
+              <dd class="title">丹麦蓝罐曲奇</dd>
+              <dd class="price">
+                  <label>￥888.00</label>
+              </dd>
+          </a>
+      </li>
+      <li>
+          <a href="商品详情.html">
+              <dt class="zoomImage" style="background-image:url(https://www.jhjksp.com/img/idx_three_pro3.jpg);"></dt>
+              <dd class="title">小老板面包干</dd>
+              <dd class="price">
+                  <label>￥888.00</label>
+              </dd>
+          </a>
+      </li>
+  </ul>
+</view>
+
+<!--应季商品-->
+<view class='idx_title'>
+  <em></em>
+  <span>应季商品</span>
+  <label><font><van-icon name="arrow" /></font></label>
+</view>
+<view class="idx_av clear"> <image src="https://www.jhjksp.com/img/ad4.jpg" mode='widthFix' /> </view>
+<view class="idx_three_pro">
+  <ul class="clear">
+      <li>
+          <a href="商品详情.html">
+              <dt class="zoomImage" style="background-image:url(https://www.jhjksp.com/img/idx_three_pro.jpg);"></dt>
+              <dd class="title">老布特木糖醇酥</dd>
+              <dd class="price">
+                  <label>￥888.00</label>
+              </dd>
+          </a>
+      </li>
+      <li>
+          <a href="商品详情.html">
+              <dt class="zoomImage" style="background-image:url(https://www.jhjksp.com/img/idx_three_pro2.jpg);"></dt>
+              <dd class="title">丹麦蓝罐曲奇</dd>
+              <dd class="price">
+                  <label>￥888.00</label>
+              </dd>
+          </a>
+      </li>
+      <li>
+          <a href="商品详情.html">
+              <dt class="zoomImage" style="background-image:url(https://www.jhjksp.com/img/idx_three_pro3.jpg);"></dt>
+              <dd class="title">小老板面包干</dd>
               <dd class="price">
                   <label>￥888.00</label>
               </dd>
