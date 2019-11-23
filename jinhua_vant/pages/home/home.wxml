@@ -26,17 +26,11 @@
 
 <!--快速入口-->
 <swiper class="idx_entrance clear" indicator-dots='true' indicator-active-color='#ff645f'>
-    <block wx:key="unique2">
+    <block wx:for="{{quick_entrance}}" wx:key="unique2">
     <swiper-item>
-      <li wx:for="{{quick_entrance}}">
-        <span class='circle' style='background-image:url({{item.proPicUrl}})'></span>
-        <label>{{item.proFont}}</label>
-      </li>
-    </swiper-item>
-    <swiper-item>
-      <li wx:for="{{quick_entrance2}}">
-        <span class='circle' style='background-image:url({{item.proPicUrl}})'></span>
-        <label>{{item.proFont}}</label>
+      <li wx:for="{{item}}">
+        <span class='circle' style='background-image:url({{item.icon}})'></span>
+        <label>{{item.FullName}}</label>
       </li>
     </swiper-item>
     </block>
@@ -119,31 +113,13 @@
 </view>
 <view class="idx_av clear"> <image src="https://www.jhjksp.com/img/ad2.jpg" mode='widthFix' /> </view>
 <view class="idx_three_pro">
-  <ul class="clear">
+  <ul class="clear" wx:for="{{promotion_goods}}">
       <li>
           <a href="商品详情.html">
               <dt class="zoomImage" style="background-image:url(https://www.jhjksp.com/img/idx_three_pro.jpg);"></dt>
-              <dd class="title">老布特木糖醇酥</dd>
+              <dd class="title">{{FullName}}</dd>
               <dd class="price">
-                  <label>￥888.00</label>
-              </dd>
-          </a>
-      </li>
-      <li>
-          <a href="商品详情.html">
-              <dt class="zoomImage" style="background-image:url(https://www.jhjksp.com/img/idx_three_pro2.jpg);"></dt>
-              <dd class="title">丹麦蓝罐曲奇</dd>
-              <dd class="price">
-                  <label>￥888.00</label>
-              </dd>
-          </a>
-      </li>
-      <li>
-          <a href="商品详情.html">
-              <dt class="zoomImage" style="background-image:url(https://www.jhjksp.com/img/idx_three_pro3.jpg);"></dt>
-              <dd class="title">小老板面包干</dd>
-              <dd class="price">
-                  <label>￥888.00</label>
+                  <label>￥{{PreBuyPrice1}}</label>
               </dd>
           </a>
       </li>
