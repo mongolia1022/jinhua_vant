@@ -1,5 +1,5 @@
 <van-tabs active="{{ tabActive }}" bind:change="onChange">
-  <van-tab wx:for="{{proClass}}" title="{{item.proClassName}}">
+  <van-tab wx:for="{{proClass}}" title="{{item.FullName}}">
     <view class='brand_select iconfont icon-shaixuan2'>全部品牌</view>
     <view class='product_list'>
       <dl class='clear'>

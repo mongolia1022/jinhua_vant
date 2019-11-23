@@ -11,7 +11,9 @@ Page({
     show: false,
     selectNum:'',
     columns: ['2', '4', '6', '8', '10'],
-    proClass: [],
+    catOne: [],
+      catTwo:[],
+      goods:[],
 
     //底部导航
     active: 1,
@@ -37,13 +39,26 @@ Page({
     }
   },
     /*获取产品一级分类*/
-    fillCatListOne() {
-        util.post('/index/cat_list_one').then(data=>{
-          data.body.list.map(item=>{
-              this.data.proClass.push({proClassName:item.FullName});
-          });
-          console.log(this.data.proClass);
-        })
+    getCatListOne() {
+        util.post('/cat_list_one').then(data=>{
+            var list = data.body.list.filter(item => item.leveal == 1);
+            this.setData({proClass: list});
+            var c1=list[0].typeId;
+            this.getGoods(c1);//加载第1个分类下的商品
+            this.getCatListTwo(c1);
+        });
+    },
+    /*获取商品列表*/
+    getGoods(catId) {
+        util.get(`/goods_list?ptype_category_id=${catId}&page=10`).then(data=>{
+            this.setData({goods: data.body.list});
+        });
+    },
+    /*获取品牌列表*/
+    getCatListTwo(catId) {
+        util.get(`/cat_list_two?par_id=${catId}`).then(data=>{
+            this.setData({goods: data.body.list});
+        });
     },
   /*tab*/
   onChange(event) {
@@ -84,7 +99,7 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {    
-    this.fillCatListOne()
+    this.getCatListOne()
   },
 
   /**

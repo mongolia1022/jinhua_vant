@@ -58,23 +58,20 @@ function post(url, data={},header={ 'content-type': 'application/json' }) {
 
 function get(url,header={ 'content-type': 'application/json'}){
     const app = getApp()
-    const publicParams = {}
-    const datas = Object.assign(publicParams,data)
 
     const promise = new Promise(function (resolve, reject, defaults) {
         console.log(`${url}-request`)
         wx.request({
             url: app.globalData.url + url,
-            data: datas,
             method: "GET",
             header: header,
             success: (r) => {
                 const isSuccess = isHttpSuccess(r.statusCode);
                 if (isSuccess) {
-                    console.log(`${url}-responseData:${r.data}`);
+                    console.log(`${url}-responseData:%o`,r.data);
                     resolve(r.data);
                 } else {
-                    console.log(`${url}-error:${r}`);
+                    console.log(`${url}-error:%o`,r);
                     reject({
                         msg: `error:${r.statusCode}`,
                         detail: r

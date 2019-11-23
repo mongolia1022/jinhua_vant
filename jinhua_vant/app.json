@@ -1,5 +1,7 @@
 {
   "pages": [
+    "pages/home/home",
+
     "pages/products/products",
     "pages/test3/test3",
     "pages/new_user/new_user",
@@ -15,7 +17,6 @@
     "pages/customer_info/customer_info",
     "pages/login/login",
     "pages/test2/index",
-    "pages/home/home",
     "pages/test/test",
     "pages/logs/logs"
   ],

@@ -19,25 +19,25 @@
 <view class='pro_price clear'>
   <view class='pro_price2_font'><font>￥</font><span>300</span>/包</view>
 </view>
-<view class='pro_title'>丹麦蓝罐曲奇饼干礼盒装零食大礼包</view>
+<view class='pro_title'>{{good.FullName}}</view>
 
 <view class='txb_all'>
   <View class='txb'>
     <span>规格</span>
     <label class='arrow iconfont' bind:click="showPopup">
-      <van-cell title="{{specs}}" bind:click="showPopup" />
+      <van-cell title="{{good.Standard}}" bind:click="showPopup" />
     </label>
   </View>
   <view class='txb'>
     <span>库存</span>
-    <label>8000</label>
+    <label>{{good.specs}}</label>
   </view>
 </view>
 
 <view class='txb_all'>
   <view class='txb'>
     <span>产地</span>
-    <label>中国福建</label>
+    <label>{{good.Area}}</label>
   </view>
   <view class='txb'>
     <span>多条码</span>

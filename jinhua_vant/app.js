@@ -35,6 +35,6 @@ App({
   },
   globalData: {
     userInfo: null,
-      url:"https://www.jhjksp.com"
+      url:"https://www.jhjksp.com/index"
   }
 })
