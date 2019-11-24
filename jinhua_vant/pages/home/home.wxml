@@ -113,8 +113,8 @@
 </view>
 <view class="idx_av clear"> <image src="https://www.jhjksp.com/img/ad2.jpg" mode='widthFix' /> </view>
 <view class="idx_three_pro">
-  <ul class="clear" wx:for="{{promotion_goods}}">
-      <li>
+  <ul class="clear">
+      <li wx:for="{{promotion_goods}}" wx:key="typeId">
           <a href="商品详情.html">
               <dt class="zoomImage" style="background-image:url(https://www.jhjksp.com/img/idx_three_pro.jpg);"></dt>
               <dd class="title">{{FullName}}</dd>
