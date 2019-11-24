@@ -1,4 +1,6 @@
 const app = getApp()
+const util = require('../../utils/util.js');
+
 
 Page({
   /*页面跳转*/
@@ -10,35 +12,9 @@ Page({
     userInfo: {},
     hasUserInfo: false,
     canIUse: wx.canIUse('button.open-type.getUserInfo'),
-    navData: [
-      {
-        text: '分类'
-      },
-      {
-        text: '分类'
-      },
-      {
-        text: '分类'
-      },
-      {
-        text: '分类'
-      },
-      {
-        text: '分类'
-      },
-      {
-        text: '分类'
-      },
-      {
-        text: '分类'
-      },
-      {
-        text: '分类'
-      },
-      {
-        text: '分类'
-      }
-    ],
+    navData: [],//一级分类
+      brandData:[],//品牌列表
+      productsData:[],//商品列表
     currentTab: 0,
     navScrollLeft: 0,
 
@@ -106,13 +82,17 @@ Page({
   clickNum: function (e) {
     var viewDataSet = e.target.dataset;
     var viewText = viewDataSet.text;
+     var num= e.target.dataset.num;
     console.log(viewText)
     console.log(e.target.dataset.num)
     this.setData({
-      _num: e.target.dataset.num,
+      _num: num,
       showBrand: false,
       barndName: viewText
-    })
+    });
+
+    var type_id=num||this.data.currentTab;
+    this.goods_list(type_id);
   },
 
   /*弹出数量*/
@@ -147,7 +127,7 @@ Page({
   
 
   //事件处理函数
-  onLoad: function () {
+  onLoad: function (option) {
     if (app.globalData.userInfo) {
       this.setData({
         userInfo: app.globalData.userInfo,
@@ -185,6 +165,8 @@ Page({
         })
       },
     })
+
+      this.cat_list_one(option);
   },
   switchNav(event) {
     var cur = event.currentTarget.dataset.current;
@@ -201,6 +183,9 @@ Page({
         currentTab: cur
       })
     }
+
+      this.cat_list_two(cur);
+    this.goods_list(cur);
   },
   switchTab(event) {
     var cur = event.detail.current;
@@ -209,5 +194,47 @@ Page({
       currentTab: cur,
       navScrollLeft: (cur - 2) * singleNavWidth
     });
-  }
+  },
+
+    //一级分类
+    cat_list_one(option) {
+        util.post('/cat_list_one').then(data=>{
+            var list = data.body.list.filter(item => item.leveal == 1);
+            this.setData({navData: list});
+
+            var cid=option.cid||list[0].typeId;
+
+            //当前分类
+            this.setData({currentTab:cid})
+            //二级分类
+            this.cat_list_two(cid);
+            //商品
+            this.goods_list(cid);
+        });
+    },
+
+    /**
+     * 品牌
+     * @param par_id 一级分类id
+     */
+    cat_list_two(par_id) {
+        util.post('/cat_list_two?par_id='+par_id).then(data=>{
+            var list = data.body.list.filter(item => item.leveal == 2);
+            this.setData({brandData: list});
+        });
+    },
+
+
+    /**
+     * 商品列表
+     * @param ptype_category_id
+     * @param page
+     */
+    goods_list(cid,page=10){
+      var params=cid?'&ptype_category_id='+cid:'';
+        util.post(`/goods_list?page=${page}${params}`).then(data=>{
+            var list = data.body.list||[];
+            this.setData({productsData: list});
+        });
+    }
 })

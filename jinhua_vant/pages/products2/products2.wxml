@@ -3,42 +3,44 @@
   <!-- scroll-left属性可以控制滚动条位置 -->
   <!-- scroll-with-animation滚动添加动画过渡 -->
   <scroll-view scroll-x="true" class="nav" scroll-left="{{navScrollLeft}}" scroll-with-animation="{{true}}">
-    <block wx:for="{{navData}}" wx:for-index="idx" wx:for-item="navItem" wx:key="idx">
-      <view class="nav-item {{currentTab == idx ?'active':''}}" data-current="{{idx}}" bindtap="switchNav">{{navItem.text}}</view>
+    <block wx:for="{{navData}}" wx:for-index="idx" wx:key="typeId">
+      <view class="nav-item {{currentTab == item.typeId ?'active':''}}" data-current="{{item.typeId}}" bindtap="switchNav">{{item.FullName}}</view>
     </block>
   </scroll-view>
   <!-- 页面内容 -->
   <swiper class="tab-box" current="{{currentTab}}" duration="300" bindchange="switchTab">
-    <swiper-item wx:for="{{[0,1,2,3,4,5,6,7,8]}}" wx:for-item="tabItem" wx:for-index="idx" wx:key="idx" class="tab-content">
+    <swiper-item wx:for="{{navData}}" wx:for-item="tabItem" wx:for-index="idx" wx:key="idx" class="tab-content">
       <view style="display:none">{{tabItem}}</view>
       <view class='brand_select iconfont icon-shaixuan2' bindtap="toShowBrand">{{barndName}}</view>
       <view class='product_list'>
-        <dl class='clear'>
-          <dt style="background-image:url(https://www.jhjksp.com/img/idx_three_pro.png);" bind:tap='toProDetails'>
-            <van-transition show="{{ animateShow }}" name="fade-up">
-              <view class='smile'>
-                <span class='iconfont icon-xiaolian3 circle'></span>
-              </view>
-            </van-transition>
-          </dt>
-          <dd class='title'>奥利奥巧脆卷</dd>
-          <dd class='details'>100g*24 /箱 库存充足</dd>
-          <dd class='price clear'>
-            <span>￥</span>
-            <label>1800</label>
-            <em>￥3000</em>
-            <view class="picker_num" bind:click="showPopup">
-              <van-cell class='cart_num iconfont' title='{{selectNum}}' bind:click="showPopup" />
-            </view>
-          </dd>
-          <dd class='coupon'>
-            <span>满赠</span>
-          </dd>
-          <dd class='gray_font clear'>
-            <span>生产:2019-09-09 到期:2020-09-09</span>
-            <label>单位:包</label>
-          </dd>
-        </dl>
+          <block wx:for="{{productsData}}" wx:key="typeId">
+              <dl class='clear'>
+              <dt style="background-image:url(https://www.jhjksp.com/img/idx_three_pro.png);" bind:tap='toProDetails'>
+                <van-transition show="{{ animateShow }}" name="fade-up">
+                  <view class='smile'>
+                    <span class='iconfont icon-xiaolian3 circle'></span>
+                  </view>
+                </van-transition>
+              </dt>
+              <dd class='title'>{{item.FullName}}</dd>
+              <dd class='details'>{{item.Standard}}</dd>
+              <dd class='price clear'>
+                <span>￥</span>
+                <label>{{item.PreBuyPrice1}}</label>
+                <em>￥{{item.PreBuyPrice2}}</em>
+                <view class="picker_num" bind:click="showPopup">
+                  <van-cell class='cart_num iconfont' title='{{selectNum}}' bind:click="showPopup" />
+                </view>
+              </dd>
+              <dd class='coupon'>
+                <span>满赠</span>
+              </dd>
+              <dd class='gray_font clear'>
+                <span>{{item.UsefulLifeDay}}</span>
+                <label>{{item.Standard}}</label>
+              </dd>
+            </dl>
+          </block>
       </view>
     </swiper-item>
   </swiper>
@@ -51,12 +53,10 @@
   <view class="height_12vw"></view>
   <view class="barnds">
     <ul>
-      <li class="{{_num == 0?'now':'option'}}" data-num = "0" bindtap="clickNum" data-text="全部品牌">全部品牌</li>
-      <li class="{{_num == 1?'now':'option'}}" data-num = "1" bindtap="clickNum" data-text="品牌名称1">品牌名称1</li>
-      <li class="{{_num == 2?'now':'option'}}" data-num = "2" bindtap="clickNum" data-text="品牌名称2">品牌名称2</li>
-      <li class="{{_num == 3?'now':'option'}}" data-num = "3" bindtap="clickNum" data-text="品牌名称3">品牌名称3</li>
-      <li class="{{_num == 4?'now':'option'}}" data-num = "4" bindtap="clickNum" data-text="品牌名称4">品牌名称4</li>
-      <li class="{{_num == 5?'now':'option'}}" data-num = "5" bindtap="clickNum" data-text="品牌名称5">品牌名称5</li>
+      <li class="{{_num == 0?'now':'option'}}" data-num = "{{0}}" bindtap="clickNum" data-text="全部品牌">全部品牌</li>
+      <block wx:for="{{brandData}}" wx:for-index="idx" wx:key="idx">
+        <li class="{{_num == 2?'now':'option'}}" data-num = "{{item.typeId}}" bindtap="clickNum" data-text="品牌名称2">{{item.FullName}}</li>
+      </block>
     </ul>
   </view>
 </view>

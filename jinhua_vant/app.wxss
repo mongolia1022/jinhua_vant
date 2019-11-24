@@ -62,12 +62,12 @@ swiper-item image{width: 100%;}
 .at-tabs__item{padding:24rpx 56rpx;}
 
 /*品牌筛选*/
-.brand_select{padding:0 5vw; height: 12w; line-height: 12vw; border-bottom: 1px solid #e5e5e5; background: #fff;}
+.brand_select{padding:0 5vw; height: 12w; line-height: 12vw; border-bottom: 1px solid #f8f8f8; background: #fff;}
 
 /*产品列表*/
 .product_list{width: 100%; background: #fff;}
-.product_list dl{padding: 4vw; border-bottom: 1px solid #e5e5e5; display: block;}
-.product_list dl dt{width: 26vw; height: 26vw; float: left; background: #e5e5e5; border-radius: 1vw; display: block;  overflow:hidden; background-position: center center; background-repeat: no-repeat; -webkit-background-size:cover; -moz-background-size:cover; background-size:cover;} 
+.product_list dl{padding: 4vw; border-bottom: 1px solid #f8f8f8; display: block;}
+.product_list dl dt{width: 26vw; height: 26vw; float: left; position: relative; background: #f8f8f8; border-radius: 1vw; display: block;  overflow:hidden; background-position: center center; background-repeat: no-repeat; -webkit-background-size:cover; -moz-background-size:cover; background-size:cover;} 
 .product_list dl dd{width: 63vw; float:right; display: block; position: relative;}
 .product_list dl dd.title{margin-bottom: 1vw;}
 .product_list dl dd.details{color: #7f8699; font-size: 80%;}
@@ -78,7 +78,11 @@ swiper-item image{width: 100%;}
 .product_list dl dd.coupon span{padding: 0 1.5vw; color: #fff; background: linear-gradient(to right, #ff645f , #ffa281); display: inline-block; margin-right: 1vw; font-size: 90%; border-radius: 1vw;}
 .product_list dl dd.gray_font{color: #999; font-size: 75%; margin-top: 1vw;}
 .product_list dl dd.gray_font span{float: left;}
+.product_list dl dd.gray_font span.active_details{float: left; color: #b06630;}
 .product_list dl dd.gray_font label{float: right;}
+
+.smile{width: 100%;}
+.smile span{width: 6vw; height: 6vw; line-height: 6vw; text-align: center; color: #fff; background: #ff645f; display: block; margin-left: 19vw; margin-top: 1vw;}
 
 /*添加购物车*/
 .add_cart{position: absolute; top: 0; right: 0;}
@@ -113,7 +117,7 @@ swiper-item image{width: 100%;}
 
 /*首页广告*/
 .idx_av{width:92%; padding: 0 4%; padding-bottom: 4vw; background: #fff;}
-.idx_av image{width:100%; float:left; border-radius: 1vw;}
+.idx_av image{width:100%; float:left; border-radius: 1.5vw;}
 .idx_three_pro{width:100%; background:#fff; padding-top: 2vw;}
 .idx_three_pro ul li{width:28vw; margin-left:4vw; float:left; padding:0 0 4vw 0; text-align:center;}
 .idx_three_pro ul li dt{width:28vw; height:28vw; background:#eee; border-radius:0.15rem;
@@ -322,3 +326,103 @@ swiper-item image{width: 100%;}
 .client_info{width: calc(100% - 24vw); float: right;}
 .client_info span{display: block; padding-top: 3vw;}
 .client_info label{display: block; color: #858585; font-size: 90%; padding-top: 1vw;}
+
+/*产品分类 二级分类*/
+.show_brand{width: 100%; height: 100%; position: fixed; top: 0; left: 0; background: #fff; z-index: 9999999999; overflow-y: scroll;}
+.brand_select2{padding:0 5vw; width: calc(100% - 10vw); height: 12w; line-height: 12vw; border-bottom: 1px solid #e5e5e5; background: #fff; position: fixed; top: 0; left: 0;}
+.height_12vw{height: 12vw;}
+.close{width: 12vw; height: 12vw; text-align: center; line-height: 12vw; position: fixed; top: 0; right: 0; font-size: 110%;}
+.barnds{padding: 3vw 0;}
+.barnds ul li{width: 30vw; height: 9vw; line-height: 9vw; text-align: center; float: left; margin-left: 2vw; margin-bottom: 3vw; border-radius: 60vw; font-size: 90%; overflow:hidden; text-overflow: ellipsis; white-space: nowrap; color: #525252; border: 1px solid #e5e5e5;}
+.barnds ul li.option{color: #525252; border: 1px solid #e5e5e5; background: #fff}
+.barnds ul li.now{color: #ff645f; border: 1px solid #ff645f; background: #fff9f9}
+
+
+/*购物车*/
+
+.cart_list{width: 100%; background: #fff;}
+.cart_list dl{padding: 4vw; padding-left: 0; border-bottom: 1px solid #e5e5e5; display: block;}
+.cart_list dl .cart_l{width: 13vw; float:left; display: block; text-align: center;}
+.cart_list dl .cart_l .van-checkbox__icon-wrap{margin: 0 auto;}
+.cart_list dl .cart_l .van-checkbox__icon{width: 6vw; height: 6vw; line-height: 8vw; margin-top: 11vw; font-size: 120%;}
+
+
+.cart_list dl dt{width: 26vw; height: 26vw; float: left; background: #e5e5e5; border-radius: 1vw; display: block;  overflow:hidden; background-position: center center; background-repeat: no-repeat; -webkit-background-size:cover; -moz-background-size:cover; background-size:cover;} 
+.cart_list dl dd{width: 54vw; float:right; display: block; position: relative;}
+.cart_list dl dd.title{margin-bottom: 1vw;}
+.cart_list dl dd.details{color: #7f8699; font-size: 80%;}
+.cart_list dl dd.price{color: #ff645f; position: relative;}
+.cart_list dl dd.price span{font-size: 80%;}
+.cart_list dl dd.price label{font-size: 110%;}
+.cart_list dl dd.price em{font-size: 80%; color: #999; text-decoration: line-through; margin-left: 1.5vw;}
+.cart_list dl dd.coupon span{padding: 0 1.5vw; color: #fff; background: linear-gradient(to right, #ff645f , #ffa281); display: inline-block; margin-right: 1vw; font-size: 90%; border-radius: 1vw;}
+.cart_list dl dd.gray_font{color: #b06630; font-size: 75%; margin-top: 1vw;}
+.cart_list dl dd.gray_font span{float: left;}
+
+.picker_num2{display: inline-block; border-radius: 60vw; background: #f6f6f6; color: #3f3f3f; padding: 0 1.5vw; font-size: 80%; vertical-align: middle; font-family: Arial, Helvetica, sans-serif; position: absolute; top: 0; right: 0;} 
+.picker_num2 .van-cell{padding: 0; background: none; color: #3f3f3f; font-size: 80%; display: inline;}
+.picker_num2 .van-cell::after{display: none;}
+.picker_num2 .van-cell::before{content: "订货数量："}
+.picker_num2::after{content: "\e602"; border: none; font-size: 80%; padding-left: 2vw;}
+.picker_num2 .van-cell__title,.van-cell__value{display: inline;}
+
+
+.cart_b{width: 100%; height: 12vw; position: fixed; bottom: 50px; left: 0; background: #fff;}
+.cart_b_r{width: 30vw; height: 12vw; float:right;}
+.cart_b_r button{width: 100%; height: 12vw; line-height: 12vw; border: none; background: linear-gradient(to right, #ff645f , #ffa281); border-radius: 0; color: #fff;}
+.cart_b_m{float: right; margin-right: 4vw;}
+.cart_b_m span{display: block; color: #2c2c2c; padding-top: 0.6vw; font-size: 100%;}
+.cart_b_m span font{color: #ff645f; font-size: 110%；}
+.cart_b_m label{display: block; color: #959595; font-size: 90%;}
+.cart_b_l{float: left; line-height: 12vw; padding: 3vw 0 0 3vw;}
+.cart_b_l .van-checkbox__icon{width: 6vw; height: 6vw; line-height: 8vw; font-size: 120%;}
+.cart_b_l .van-checkbox__label{line-height: 6.5vw;}
+
+/*每日优惠*/
+.discount_t{width: 100%; height: 12vw; line-height: 12vw; color: #ff645f; font-size: 120%; text-align: center;}
+.discount_t span{width: 5vw; height: 5vw; line-height: 5vw; display: inline-block; background: #ff645f; color: #fff; font-size: 80%; vertical-align: middle;}
+.discount_t label{display: inline-block; height: 5vw; line-height: 5vw; margin-left: 1vw; vertical-align: middle;}
+.discount_count{width: 100%; text-align: center; margin-bottom: 3vw;}
+.discount_count span font{background: #393939; color: #fff; border-radius: 0.5vw; padding: 0 1.2vw; margin: 0 0.5vw;}
+.discount_btn{position: absolute; top: 0; right: 0;} 
+.discount_btn button{height: 8vw; line-height: 8vw; background: #ff645f; color: #fff; font-size: 14px;}
+
+/*新产品列表tab*/
+.container2{
+    width: 100%;
+    height: 100%;
+}
+.nav {
+    height: 12vw;
+    width: 100%;
+    box-sizing: border-box;
+    overflow: hidden;
+    line-height: 12vw;
+    background: #fff;
+    font-size: 16px;
+    white-space: nowrap;
+    position: fixed;
+    top: 0;
+    left: 0;
+    z-index: 99;
+}
+.nav::before{content: ''; width: 100%; height: 1px; position: absolute; left: 0; bottom: 0; border-top: 1px solid #f8f8f8;}
+.nav-item {
+    width: 20%;
+    display: inline-block;
+    text-align: center;
+    position: relative;
+}
+.nav-item.active{
+    color: red;
+}
+.nav-item.active::after{content: ''; width:6vw; height:0.7vw; position: absolute; bottom: 1.8vw; left: 50%; margin-left: -3vw; background-image: linear-gradient(to right , #ff645f, #ff8581);}
+
+.tab-box{
+    padding-top: 12vw;
+    height: 100%;
+    box-sizing: border-box;
+}
+.tab-content{
+    overflow-y: scroll;
+}

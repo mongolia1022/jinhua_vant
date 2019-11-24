@@ -1,15 +1,18 @@
 {
   "pages": [
+    "pages/products2/products2",
     "pages/home/home",
-
+    "pages/feedback/feedback",
     "pages/products/products",
+    "pages/discount/discount",
+    "pages/cart/cart",
+    "pages/submit_order/submit_order",
+    "pages/my_info/my_info",
     "pages/test3/test3",
     "pages/new_user/new_user",
-    "pages/my_info/my_info",
     "pages/my_client/my_client",
     "pages/my_order/my_order",
     "pages/mine/mine",
-    "pages/submit_order/submit_order",
     "pages/pro_details_active/pro_details_active",
     "pages/pro_details/pro_details",
     "pages/my_address/my_address",
