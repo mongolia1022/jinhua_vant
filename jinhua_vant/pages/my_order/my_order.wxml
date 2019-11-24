@@ -1,42 +1,43 @@
 <van-tabs active="{{ tabActive }}" bind:change="onChange">
   <van-tab wx:for="{{proClass}}" title="{{item.proClassName}}">
-  
-    <view class='my_order finished'>
-      <view class='my_order_code'>
-        <view class='my_order_code'>68-O-2019-08-09-0003</view>
-        <view class='my_order_time'>2019-09-09 12:00:00</view>
+    <block wx:for="{{ordersData}}" wx:key="Billcode">
+      <view class='my_order finished'>
+        <view class='my_order_code'>
+          <view class='my_order_code'>{{item.Billcode}}</view>
+          <view class='my_order_time'>{{item.BillDate}}</view>
+        </view>
+        <view class="my_order_pic">
+          <ul class='clear'>
+            <li style="background-image:url(https://www.jhjksp.com/img/idx_three_pro.png);"></li>
+            <li style="background-image:url(https://www.jhjksp.com/img/idx_three_pro.png);"></li>
+            <li style="background-image:url(https://www.jhjksp.com/img/idx_three_pro.png);"></li>
+            <li style="background-image:url(https://www.jhjksp.com/img/idx_three_pro.png);"></li>
+            <li style="background-image:url(https://www.jhjksp.com/img/idx_three_pro.png);"></li>
+          </ul>
+        </view>
+        <view class="my_order_price">
+          <dl class='clear'>
+            <dd class='price clear'>
+              <label>1800</label>
+              <span>￥</span>
+            </dd>
+            <dd class='coupon'>
+              <span>满赠</span>
+            </dd>
+            <dd class='origin'>单据金额￥3000</dd>
+          </dl>
+        </view>
+        <view class="order_btns">
+          <button class="pay" style="display=none">立即支付</button>
+          <button>查看发票</button>
+          <button>再次购买</button>
+        </view>
+        <view class="order_state">
+          <span>待出库审核</span>
+          <label><image slot="icon" src="https://www.jhjksp.com/img/finished.png" mode="widthFix" /></label>
+        </view>
       </view>
-      <view class="my_order_pic">
-        <ul class='clear'>
-          <li style="background-image:url(https://www.jhjksp.com/img/idx_three_pro.png);"></li>
-          <li style="background-image:url(https://www.jhjksp.com/img/idx_three_pro.png);"></li>
-          <li style="background-image:url(https://www.jhjksp.com/img/idx_three_pro.png);"></li>
-          <li style="background-image:url(https://www.jhjksp.com/img/idx_three_pro.png);"></li>
-          <li style="background-image:url(https://www.jhjksp.com/img/idx_three_pro.png);"></li>
-        </ul>
-      </view>
-      <view class="my_order_price">
-        <dl class='clear'>
-          <dd class='price clear'>
-            <label>1800</label>
-            <span>￥</span>
-          </dd>
-          <dd class='coupon'>
-            <span>满赠</span>
-          </dd>
-          <dd class='origin'>单据金额￥3000</dd>
-        </dl>
-      </view>
-      <view class="order_btns">
-        <button class="pay" style="display=none">立即支付</button>
-        <button>查看发票</button>
-        <button>再次购买</button>
-      </view>
-      <view class="order_state">
-        <span>待出库审核</span>
-        <label><image slot="icon" src="https://www.jhjksp.com/img/finished.png" mode="widthFix" /></label>
-      </view>
-    </view>
+    </block>
 
     <view class='my_order'  bind:tap='toSubmitOrder'>
       <view class='my_order_code'>

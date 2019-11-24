@@ -18,8 +18,8 @@ Page({
     show: false,
 
     //选择规格
-    specs: '500g*15包/箱',
-    columns: ['500g*15包/箱', '600g*15包/箱', '700g*15包/箱', '800g*15包/箱', '900g*15包/箱']
+    columns: ['500g*15包/箱', '600g*15包/箱', '700g*15包/箱', '800g*15包/箱', '900g*15包/箱'],
+      productData:{}
   },
   /*banner*/
   swiperChange: function (e) {
@@ -75,7 +75,7 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-
+      this.goods_info(options.pid);
   },
 
   /**
@@ -125,5 +125,11 @@ Page({
    */
   onShareAppMessage: function () {
 
-  }
+  },
+    goods_info(pid){
+        util.get(`/goods_info?ptypeId=${pid}`).then(data=>{
+            var productData = data;
+            this.setData({productData: productData});
+        });
+    }
 })

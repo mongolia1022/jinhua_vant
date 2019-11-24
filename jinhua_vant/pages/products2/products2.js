@@ -198,7 +198,7 @@ Page({
 
     //一级分类
     cat_list_one(option) {
-        util.post('/cat_list_one').then(data=>{
+        util.get('/cat_list_one').then(data=>{
             var list = data.body.list.filter(item => item.leveal == 1);
             this.setData({navData: list});
 
@@ -218,7 +218,7 @@ Page({
      * @param par_id 一级分类id
      */
     cat_list_two(par_id) {
-        util.post('/cat_list_two?par_id='+par_id).then(data=>{
+        util.get('/cat_list_two?par_id='+par_id).then(data=>{
             var list = data.body.list.filter(item => item.leveal == 2);
             this.setData({brandData: list});
         });
@@ -232,7 +232,10 @@ Page({
      */
     goods_list(cid,page=10){
       var params=cid?'&ptype_category_id='+cid:'';
-        util.post(`/goods_list?page=${page}${params}`).then(data=>{
+        util.get(`/goods_list?page=${page}${params}`).then(data=>{
+            if (!data.body) {
+              return;
+            }
             var list = data.body.list||[];
             this.setData({productsData: list});
         });

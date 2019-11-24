@@ -197,7 +197,7 @@ Page({
 
   //一级分类
   cat_list_one() {
-      util.post('/cat_list_one').then(data=>{
+      util.get('/cat_list_one').then(data=>{
           var list = data.body.list.filter(item => item.leveal == 1);
           Array.from(list, c => c.icon = `${getApp().globalData.url}/img/et${c.typeId}.jpg`);
           var quick_entrance=[];
@@ -212,7 +212,7 @@ Page({
 
     //促销商品
     get_goods_promotion(){
-        util.post('/get_goods_promotion?type='+1).then(data=>{
+        util.get('/get_goods_promotion?type='+1).then(data=>{
             this.setData({promotion_goods: data});
         });
     }
