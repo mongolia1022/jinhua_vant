@@ -49,7 +49,8 @@ Page({
     nav_ico5: {
       normal: 'https://www.jhjksp.com/img/nav5.png',
       active: 'https://www.jhjksp.com/img/nav5_2.png'
-    }
+    },
+      promotionType:new Map([[1, '买赠'], [2, '满减'], [3, '买促'], [4, '每日特惠'], [5, '应季商品'],[6,'收藏商品']]),
   },
   /*底部导航*/
   onChange(event) {
@@ -198,7 +199,7 @@ Page({
 
     //一级分类
     cat_list_one(option) {
-        util.get('/cat_list_one').then(data=>{
+        util.get('/index/cat_list_one?par_id=00000').then(data=>{
             var list = data.body.list.filter(item => item.leveal == 1);
             this.setData({navData: list});
 
@@ -218,7 +219,7 @@ Page({
      * @param par_id 一级分类id
      */
     cat_list_two(par_id) {
-        util.get('/cat_list_two?par_id='+par_id).then(data=>{
+        util.get('/index/cat_list_two?par_id='+par_id).then(data=>{
             var list = data.body.list.filter(item => item.leveal == 2);
             this.setData({brandData: list});
         });
@@ -232,11 +233,14 @@ Page({
      */
     goods_list(cid,page=10){
       var params=cid?'&ptype_category_id='+cid:'';
-        util.get(`/goods_list?page=${page}${params}`).then(data=>{
+        util.get(`/index/goods_list?page=${page}${params}`).then(data=>{
             if (!data.body) {
               return;
             }
             var list = data.body.list||[];
+            list.map(item=>{
+                item.promotion_name = promotionType.get(item.promotion);
+            })
             this.setData({productsData: list});
         });
     }

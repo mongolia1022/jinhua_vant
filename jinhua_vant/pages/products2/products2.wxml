@@ -23,17 +23,17 @@
                 </van-transition>
               </dt>
               <dd class='title'>{{item.FullName}}</dd>
-              <dd class='details'>{{item.Standard}}</dd>
+              <dd class='details'>{{item.Standard}} 库存{{item.Qty}}</dd>
               <dd class='price clear'>
                 <span>￥</span>
                 <label>{{item.PreBuyPrice1}}</label>
-                <em>￥{{item.PreBuyPrice2}}</em>
+                <em>￥{{item.PreBuyPrice1}}</em>
                 <view class="picker_num" bind:click="showPopup">
                   <van-cell class='cart_num iconfont' title='{{selectNum}}' bind:click="showPopup" />
                 </view>
               </dd>
               <dd class='coupon'>
-                <span>满赠</span>
+                <span>{{item.promotion_name}}</span>
               </dd>
               <dd class='gray_font clear'>
                 <span>{{item.UsefulLifeDay}}</span>

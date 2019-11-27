@@ -52,7 +52,7 @@ Page({
       wx.navigateTo({ url: '../home/home' })
     }
     if (event.detail == 1) {
-      wx.navigateTo({ url: '../products/products' })
+      wx.navigateTo({ url: '../products2/products2' })
     }
     if (event.detail == 2) {
       wx.navigateTo({ url: '../my_order/my_order' })
@@ -197,7 +197,7 @@ Page({
 
   //一级分类
   cat_list_one() {
-      util.get('/cat_list_one').then(data=>{
+      util.get('/index/cat_list_one?par_id=00000').then(data=>{
           var list = data.body.list.filter(item => item.leveal == 1);
           Array.from(list, c => c.icon = `${getApp().globalData.url}/img/et${c.typeId}.jpg`);
           var quick_entrance=[];
@@ -212,7 +212,7 @@ Page({
 
     //促销商品
     get_goods_promotion(){
-        util.get('/get_goods_promotion?type='+1).then(data=>{
+        util.get('/index/get_goods_promotion?type='+1).then(data=>{
             this.setData({promotion_goods: data});
         });
     }
