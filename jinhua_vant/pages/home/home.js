@@ -6,6 +6,18 @@ Page({
     wx.navigateTo({ url: '../discount/discount' })
   },
 
+  idxEntrance: function (options) {
+    wx.navigateTo({ url: '../products2/products2' })
+  },
+
+  ProDetailsActive: function (options) {
+    wx.navigateTo({ url: '../pro_details_active/pro_details_active' })
+  },
+
+  ProDetails: function (options) {
+    wx.navigateTo({ url: '../pro_details/pro_details' })
+  },
+
   /**
    * 页面的初始数据
    */

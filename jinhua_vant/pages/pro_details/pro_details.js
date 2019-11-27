@@ -1,5 +1,13 @@
 // pages/pro_details/pro_details.js
 Page({
+ 
+  toHome: function (options) {
+    wx.navigateTo({ url: '../home/home' })
+  },
+
+  toCart: function (options) {
+    wx.navigateTo({ url: '../cart/cart' })
+  },
 
   /**
    * 页面的初始数据

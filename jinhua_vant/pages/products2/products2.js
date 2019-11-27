@@ -7,6 +7,7 @@ Page({
   toProDetails: function (options) {
     wx.navigateTo({ url: '../pro_details/pro_details' })
   },
+  
   data: {
     motto: 'Hello World',
     userInfo: {},
@@ -171,12 +172,14 @@ Page({
   },
   switchNav(event) {
     var cur = event.currentTarget.dataset.current;
-    //每个tab选项宽度占1/5
-    var singleNavWidth = this.data.windowWidth / 5;
-    //tab选项居中                            
+    //每个tab选项宽度占1/4
+    var singleNavWidth = this.data.windowWidth / 4;
+    /*
+    //tab选项居中
     this.setData({
       navScrollLeft: (cur - 2) * singleNavWidth
     })
+    */
     if (this.data.currentTab == cur) {
       return false;
     } else {
@@ -190,7 +193,7 @@ Page({
   },
   switchTab(event) {
     var cur = event.detail.current;
-    var singleNavWidth = this.data.windowWidth / 5;
+    var singleNavWidth = this.data.windowWidth / 4;
     this.setData({
       currentTab: cur,
       navScrollLeft: (cur - 2) * singleNavWidth

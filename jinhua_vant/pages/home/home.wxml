@@ -28,7 +28,7 @@
 <swiper class="idx_entrance clear" indicator-dots='true' indicator-active-color='#ff645f'>
     <block wx:for="{{quick_entrance}}" wx:key="unique2">
     <swiper-item>
-      <li wx:for="{{item}}">
+      <li wx:for="{{item}}" bindtap="idxEntrance">
         <span class='circle' style='background-image:url({{item.icon}})'></span>
         <label>{{item.FullName}}</label>
       </li>
@@ -48,7 +48,7 @@
 
 <view class="idx_three_pro">
   <ul class="clear">
-      <li>
+      <li bindtap="ProDetailsActive">
           <a href="商品详情.html">
               <dt class="zoomImage" style="background-image:url(https://www.jhjksp.com/img/idx_three_pro.jpg);"></dt>
               <dd class="title">老布特木糖醇酥</dd>
@@ -57,7 +57,7 @@
               </dd>
           </a>
       </li>
-      <li>
+      <li bindtap="ProDetailsActive">
           <a href="商品详情.html">
               <dt class="zoomImage" style="background-image:url(https://www.jhjksp.com/img/idx_three_pro2.jpg);"></dt>
               <dd class="title">丹麦蓝罐曲奇</dd>
@@ -66,7 +66,7 @@
               </dd>
           </a>
       </li>
-      <li>
+      <li bindtap="ProDetailsActive">
           <a href="商品详情.html">
               <dt class="zoomImage" style="background-image:url(https://www.jhjksp.com/img/idx_three_pro3.jpg);"></dt>
               <dd class="title">小老板面包干</dd>
@@ -75,7 +75,7 @@
               </dd>
           </a>
       </li>
-      <li>
+      <li bindtap="ProDetailsActive">
           <a href="商品详情.html">
               <dt class="zoomImage" style="background-image:url(https://www.jhjksp.com/img/idx_three_pro.jpg);"></dt>
               <dd class="title">老布特木糖醇酥</dd>
@@ -84,7 +84,7 @@
               </dd>
           </a>
       </li>
-      <li>
+      <li bindtap="ProDetailsActive">
           <a href="商品详情.html">
               <dt class="zoomImage" style="background-image:url(https://www.jhjksp.com/img/idx_three_pro2.jpg);"></dt>
               <dd class="title">丹麦蓝罐曲奇</dd>
@@ -93,7 +93,7 @@
               </dd>
           </a>
       </li>
-      <li>
+      <li bindtap="ProDetailsActive">
           <a href="商品详情.html">
               <dt class="zoomImage" style="background-image:url(https://www.jhjksp.com/img/idx_three_pro3.jpg);"></dt>
               <dd class="title">小老板面包干</dd>
@@ -106,7 +106,7 @@
 </view>
 
 <!--促销商品-->
-<view class='idx_title'>
+<view class='idx_title' bindtap="idxEntrance">
   <em></em>
   <span>促销商品</span>
   <label><font><van-icon name="arrow" /></font></label>
@@ -114,7 +114,7 @@
 <view class="idx_av clear"> <image src="https://www.jhjksp.com/img/ad2.jpg" mode='widthFix' /> </view>
 <view class="idx_three_pro">
   <ul class="clear">
-      <li wx:for="{{promotion_goods}}" wx:key="typeId">
+      <li wx:for="{{promotion_goods}}" wx:key="typeId" bindtap="ProDetails">
           <a href="商品详情.html">
               <dt class="zoomImage" style="background-image:url(https://www.jhjksp.com/img/idx_three_pro.jpg);"></dt>
               <dd class="title">{{FullName}}</dd>
@@ -127,7 +127,7 @@
 </view>
 
 <!--收藏合集-->
-<view class='idx_title'>
+<view class='idx_title' bindtap="idxEntrance">
   <em></em>
   <span>收藏合集</span>
   <label><font><van-icon name="arrow" /></font></label>
@@ -135,7 +135,7 @@
 <view class="idx_av clear"> <image src="https://www.jhjksp.com/img/ad3.jpg" mode='widthFix' /> </view>
 <view class="idx_three_pro">
   <ul class="clear">
-      <li>
+      <li bindtap="ProDetails">
           <a href="商品详情.html">
               <dt class="zoomImage" style="background-image:url(https://www.jhjksp.com/img/idx_three_pro.jpg);"></dt>
               <dd class="title">老布特木糖醇酥</dd>
@@ -144,7 +144,7 @@
               </dd>
           </a>
       </li>
-      <li>
+      <li bindtap="ProDetails">
           <a href="商品详情.html">
               <dt class="zoomImage" style="background-image:url(https://www.jhjksp.com/img/idx_three_pro2.jpg);"></dt>
               <dd class="title">丹麦蓝罐曲奇</dd>
@@ -153,7 +153,7 @@
               </dd>
           </a>
       </li>
-      <li>
+      <li bindtap="ProDetails">
           <a href="商品详情.html">
               <dt class="zoomImage" style="background-image:url(https://www.jhjksp.com/img/idx_three_pro3.jpg);"></dt>
               <dd class="title">小老板面包干</dd>
@@ -166,7 +166,7 @@
 </view>
 
 <!--应季商品-->
-<view class='idx_title'>
+<view class='idx_title' bindtap="idxEntrance">
   <em></em>
   <span>应季商品</span>
   <label><font><van-icon name="arrow" /></font></label>
@@ -174,7 +174,7 @@
 <view class="idx_av clear"> <image src="https://www.jhjksp.com/img/ad4.jpg" mode='widthFix' /> </view>
 <view class="idx_three_pro">
   <ul class="clear">
-      <li>
+      <li bindtap="ProDetails">
           <a href="商品详情.html">
               <dt class="zoomImage" style="background-image:url(https://www.jhjksp.com/img/idx_three_pro.jpg);"></dt>
               <dd class="title">老布特木糖醇酥</dd>
@@ -183,7 +183,7 @@
               </dd>
           </a>
       </li>
-      <li>
+      <li bindtap="ProDetails">
           <a href="商品详情.html">
               <dt class="zoomImage" style="background-image:url(https://www.jhjksp.com/img/idx_three_pro2.jpg);"></dt>
               <dd class="title">丹麦蓝罐曲奇</dd>
@@ -192,7 +192,7 @@
               </dd>
           </a>
       </li>
-      <li>
+      <li bindtap="ProDetails">
           <a href="商品详情.html">
               <dt class="zoomImage" style="background-image:url(https://www.jhjksp.com/img/idx_three_pro3.jpg);"></dt>
               <dd class="title">小老板面包干</dd>

@@ -64,11 +64,11 @@
 <view class='bottom_buy clear'>
   <view class='bottom_buy_l'>
     <ul class='clear'>
-      <li>
+      <li bindtap="toHome">
         <span class='iconfont icon-shouye4'></span>
         <label>首页</label>
       </li>
-      <li>
+      <li bindtap="toCart">
         <view class="cart_nume circle">1</view>
         <span class='iconfont icon-gouwuche2'></span>
         <label>购物车</label>

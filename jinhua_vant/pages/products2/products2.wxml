@@ -14,7 +14,7 @@
       <view class='brand_select iconfont icon-shaixuan2' bindtap="toShowBrand">{{barndName}}</view>
       <view class='product_list'>
           <block wx:for="{{productsData}}" wx:key="typeId">
-              <dl class='clear'>
+              <dl class='clear' >
               <dt style="background-image:url(https://www.jhjksp.com/img/idx_three_pro.png);" bind:tap='toProDetails'>
                 <van-transition show="{{ animateShow }}" name="fade-up">
                   <view class='smile'>
@@ -22,9 +22,9 @@
                   </view>
                 </van-transition>
               </dt>
-              <dd class='title'>{{item.FullName}}</dd>
-              <dd class='details'>{{item.Standard}} 库存{{item.Qty}}</dd>
-              <dd class='price clear'>
+              <dd class='title' bind:tap='toProDetails'>{{item.FullName}}</dd>
+              <dd class='details' bind:tap='toProDetails'>{{item.Standard}} 库存{{item.Qty}}</dd>
+              <dd class='price clear' bind:tap='toProDetails'>
                 <span>￥</span>
                 <label>{{item.PreBuyPrice1}}</label>
                 <em>￥{{item.PreBuyPrice1}}</em>
@@ -35,7 +35,7 @@
               <dd class='coupon'>
                 <span>{{item.promotion_name}}</span>
               </dd>
-              <dd class='gray_font clear'>
+              <dd class='gray_font clear' bind:tap='toProDetails'>
                 <span>{{item.UsefulLifeDay}}</span>
                 <label>{{item.Standard}}</label>
               </dd>
