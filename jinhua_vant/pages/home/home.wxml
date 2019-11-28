@@ -114,14 +114,14 @@
 <view class="idx_av clear"> <image src="https://www.jhjksp.com/img/ad2.jpg" mode='widthFix' /> </view>
 <view class="idx_three_pro">
   <ul class="clear">
-      <li wx:for="{{promotion_goods}}" wx:key="typeId" bindtap="ProDetails">
-          <a href="商品详情.html">
+      <li wx:for="{{promotion_goods}}" wx:key="typeId">
+          <navigator url="../pro_details/pro_details?id={{item.typeId}}">
               <dt class="zoomImage" style="background-image:url(https://www.jhjksp.com/img/idx_three_pro.jpg);"></dt>
-              <dd class="title">{{FullName}}</dd>
+              <dd class="title">{{item.FullName}}</dd>
               <dd class="price">
-                  <label>￥{{PreBuyPrice1}}</label>
+                  <label>￥{{item.PreBuyPrice1}}</label>
               </dd>
-          </a>
+          </navigator>
       </li>
   </ul>
 </view>
