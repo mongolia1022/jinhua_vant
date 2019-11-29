@@ -68,6 +68,7 @@ Page({
     formSubmit: function (e) {
     var val=e.detail.value;
         util.post('/index/login',{FullName:val.name,password:val.pw}).then(data=>{
+
         });
     },
 })

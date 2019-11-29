@@ -5,7 +5,7 @@ const util = require('../../utils/util.js');
 Page({
   /*页面跳转*/
   toProDetails: function (options) {
-    wx.navigateTo({ url: '../pro_details/pro_details' })
+    wx.navigateTo({ url: '../pro_details/pro_details?id='+options.currentTarget.dataset.id })
   },
   
   data: {
