@@ -12,38 +12,41 @@
     <swiper-item wx:for="{{navData}}" wx:for-item="tabItem" wx:for-index="idx" wx:key="idx" class="tab-content">
       <view style="display:none">{{tabItem}}</view>
       <view class='brand_select iconfont icon-shaixuan2' bindtap="toShowBrand">{{barndName}}</view>
-      <view class='product_list'>
-          <block wx:for="{{productsData}}" wx:key="typeId">
-              <dl class='clear' >
-              <dt style="background-image:url(https://www.jhjksp.com/img/idx_three_pro.png);" bind:tap='toProDetails'>
-                <van-transition show="{{ animateShow }}" name="fade-up">
-                  <view class='smile'>
-                    <span class='iconfont icon-xiaolian3 circle'></span>
-                  </view>
-                </van-transition>
-              </dt>
-              <dd class='title' bind:tap='toProDetails'>{{item.FullName}}</dd>
-              <dd class='details' bind:tap='toProDetails'>{{item.Standard}} 库存{{item.Qty}}</dd>
-              <dd class='price clear' bind:tap='toProDetails'>
-                <span>￥</span>
-                <label>{{item.PreBuyPrice1}}</label>
-                <em>￥{{item.PreBuyPrice1}}</em>
-                <view class="picker_num" bind:click="showPopup">
-                  <van-cell class='cart_num iconfont' title='{{selectNum}}' bind:click="showPopup" />
-                </view>
-              </dd>
-              <dd class='coupon'>
-                <span>{{item.promotion_name}}</span>
-              </dd>
-              <dd class='gray_font clear' bind:tap='toProDetails'>
-                <span>{{item.UsefulLifeDay}}</span>
-                <label>{{item.Standard}}</label>
-              </dd>
-            </dl>
-          </block>
-      </view>
+
     </swiper-item>
   </swiper>
+  <!-- 列表 -->
+  <view class='product_list'>
+    <block wx:for="{{productsData}}" wx:key="typeId">
+      <dl class='clear' >
+        <dt style="background-image:url(https://www.jhjksp.com/img/idx_three_pro.png);" bind:tap='toProDetails'>
+          <van-transition show="{{ animateShow }}" name="fade-up">
+            <view class='smile'>
+              <span class='iconfont icon-xiaolian3 circle'></span>
+            </view>
+          </van-transition>
+        </dt>
+        <dd class='title' bind:tap='toProDetails'>{{item.FullName}}</dd>
+        <dd class='details' bind:tap='toProDetails'>{{item.Standard}} 库存{{item.Qty}}</dd>
+        <dd class='price clear' bind:tap='toProDetails'>
+          <span>￥</span>
+          <label>{{item.PreBuyPrice1}}</label>
+          <em>￥{{item.PreBuyPrice1}}</em>
+          <view class="picker_num" bind:click="showPopup">
+            <van-cell class='cart_num iconfont' title='{{selectNum}}' bind:click="showPopup" />
+          </view>
+        </dd>
+        <dd class='coupon'>
+          <span>{{item.promotion_name}}</span>
+        </dd>
+        <dd class='gray_font clear' bind:tap='toProDetails'>
+          <span>{{item.UsefulLifeDay}}</span>
+          <label>{{item.Standard}}</label>
+        </dd>
+      </dl>
+    </block>
+  </view>
+
 </view>
 
 <!--品牌分类-->
