@@ -12,7 +12,10 @@
     <swiper-item wx:for="{{[0,1,2,3,4,5,6,7,8]}}" wx:for-item="tabItem" wx:for-index="idx" wx:key="idx" class="tab-content">
       <view style="display:none">{{tabItem}}</view>
       <view class='brand_select iconfont icon-shaixuan2' bindtap="toShowBrand">{{barndName}}</view>
-      <view class='product_list'>
+      
+    </swiper-item>
+  </swiper>
+  <view class='product_list'>
         <dl class='clear'>
           <dt style="background-image:url(https://www.jhjksp.com/img/idx_three_pro.png);" bind:tap='toProDetails'>
             <van-transition show="{{ animateShow }}" name="fade-up">
@@ -40,8 +43,6 @@
           </dd>
         </dl>
       </view>
-    </swiper-item>
-  </swiper>
 </view>
 
 <!--品牌分类-->
