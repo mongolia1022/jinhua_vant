@@ -420,7 +420,8 @@ swiper-item image{width: 100%;}
 
 .tab-box{
     padding-top: 12vw;
-    height: 100%;
+    /*height: 100%;*/
+    height: 24vw;
     box-sizing: border-box;
 }
 .tab-content{
