@@ -7,8 +7,9 @@ Page({
   toProDetails: function (options) {
     wx.navigateTo({ url: '../pro_details/pro_details?id='+options.currentTarget.dataset.id })
   },
-  
-  data: {
+    promotionType:new Map([[1, '买赠'], [2, '满减'], [3, '买促'], [4, '每日特惠'], [5, '应季商品'],[6,'收藏商品']]),
+
+    data: {
     motto: 'Hello World',
     userInfo: {},
     hasUserInfo: false,
@@ -51,7 +52,6 @@ Page({
       normal: 'https://www.jhjksp.com/img/nav5.png',
       active: 'https://www.jhjksp.com/img/nav5_2.png'
     },
-      promotionType:new Map([[1, '买赠'], [2, '满减'], [3, '买促'], [4, '每日特惠'], [5, '应季商品'],[6,'收藏商品']]),
   },
   /*底部导航*/
   onChange(event) {
@@ -235,14 +235,14 @@ Page({
      * @param page
      */
     goods_list(cid,page=10){
-      var params=cid?'&ptype_category_id='+cid:'';
-        util.get(`/index/goods_list?page=${page}${params}`).then(data=>{
+      var params=cid?'/ptype_category_id/'+cid:'';
+        util.get(`/index/goods_list/page=${page}${params}`).then(data=>{
             if (!data.body) {
               return;
             }
             var list = data.body.list||[];
             list.map(item=>{
-                item.promotion_name = promotionType.get(item.promotion);
+                item.promotion_name = this.promotionType.get(item.promotion);
             })
             this.setData({productsData: list});
         });
