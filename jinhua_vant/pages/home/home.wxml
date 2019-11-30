@@ -48,59 +48,14 @@
 
 <view class="idx_three_pro">
   <ul class="clear">
-      <li bindtap="ProDetailsActive">
-          <a href="商品详情.html">
+      <li wx:for="{{meiritehui_goods}}" wx:key="typeId">
+          <navigator url="../pro_details/pro_details?id={{item.typeId}}">
               <dt class="zoomImage" style="background-image:url(https://www.jhjksp.com/img/idx_three_pro.jpg);"></dt>
-              <dd class="title">老布特木糖醇酥</dd>
+              <dd class="title">{{item.FullName}}</dd>
               <dd class="price">
-                  <label>￥888.00</label>
+                  <label>￥{{item.PreBuyPrice1}}</label>
               </dd>
-          </a>
-      </li>
-      <li bindtap="ProDetailsActive">
-          <a href="商品详情.html">
-              <dt class="zoomImage" style="background-image:url(https://www.jhjksp.com/img/idx_three_pro2.jpg);"></dt>
-              <dd class="title">丹麦蓝罐曲奇</dd>
-              <dd class="price">
-                  <label>￥888.00</label>
-              </dd>
-          </a>
-      </li>
-      <li bindtap="ProDetailsActive">
-          <a href="商品详情.html">
-              <dt class="zoomImage" style="background-image:url(https://www.jhjksp.com/img/idx_three_pro3.jpg);"></dt>
-              <dd class="title">小老板面包干</dd>
-              <dd class="price">
-                  <label>￥888.00</label>
-              </dd>
-          </a>
-      </li>
-      <li bindtap="ProDetailsActive">
-          <a href="商品详情.html">
-              <dt class="zoomImage" style="background-image:url(https://www.jhjksp.com/img/idx_three_pro.jpg);"></dt>
-              <dd class="title">老布特木糖醇酥</dd>
-              <dd class="price">
-                  <label>￥888.00</label>
-              </dd>
-          </a>
-      </li>
-      <li bindtap="ProDetailsActive">
-          <a href="商品详情.html">
-              <dt class="zoomImage" style="background-image:url(https://www.jhjksp.com/img/idx_three_pro2.jpg);"></dt>
-              <dd class="title">丹麦蓝罐曲奇</dd>
-              <dd class="price">
-                  <label>￥888.00</label>
-              </dd>
-          </a>
-      </li>
-      <li bindtap="ProDetailsActive">
-          <a href="商品详情.html">
-              <dt class="zoomImage" style="background-image:url(https://www.jhjksp.com/img/idx_three_pro3.jpg);"></dt>
-              <dd class="title">小老板面包干</dd>
-              <dd class="price">
-                  <label>￥888.00</label>
-              </dd>
-          </a>
+          </navigator>
       </li>
   </ul>
 </view>
@@ -135,32 +90,14 @@
 <view class="idx_av clear"> <image src="https://www.jhjksp.com/img/ad3.jpg" mode='widthFix' /> </view>
 <view class="idx_three_pro">
   <ul class="clear">
-      <li bindtap="ProDetails">
-          <a href="商品详情.html">
+      <li wx:for="{{shoucang_goods}}" wx:key="typeId">
+          <navigator url="../pro_details/pro_details?id={{item.typeId}}">
               <dt class="zoomImage" style="background-image:url(https://www.jhjksp.com/img/idx_three_pro.jpg);"></dt>
-              <dd class="title">老布特木糖醇酥</dd>
+              <dd class="title">{{item.FullName}}</dd>
               <dd class="price">
-                  <label>￥888.00</label>
+                  <label>￥{{item.PreBuyPrice1}}</label>
               </dd>
-          </a>
-      </li>
-      <li bindtap="ProDetails">
-          <a href="商品详情.html">
-              <dt class="zoomImage" style="background-image:url(https://www.jhjksp.com/img/idx_three_pro2.jpg);"></dt>
-              <dd class="title">丹麦蓝罐曲奇</dd>
-              <dd class="price">
-                  <label>￥888.00</label>
-              </dd>
-          </a>
-      </li>
-      <li bindtap="ProDetails">
-          <a href="商品详情.html">
-              <dt class="zoomImage" style="background-image:url(https://www.jhjksp.com/img/idx_three_pro3.jpg);"></dt>
-              <dd class="title">小老板面包干</dd>
-              <dd class="price">
-                  <label>￥888.00</label>
-              </dd>
-          </a>
+          </navigator>
       </li>
   </ul>
 </view>
@@ -174,32 +111,14 @@
 <view class="idx_av clear"> <image src="https://www.jhjksp.com/img/ad4.jpg" mode='widthFix' /> </view>
 <view class="idx_three_pro">
   <ul class="clear">
-      <li bindtap="ProDetails">
-          <a href="商品详情.html">
+      <li wx:for="{{yingji_goods}}" wx:key="typeId">
+          <navigator url="../pro_details/pro_details?id={{item.typeId}}">
               <dt class="zoomImage" style="background-image:url(https://www.jhjksp.com/img/idx_three_pro.jpg);"></dt>
-              <dd class="title">老布特木糖醇酥</dd>
+              <dd class="title">{{item.FullName}}</dd>
               <dd class="price">
-                  <label>￥888.00</label>
+                  <label>￥{{item.PreBuyPrice1}}</label>
               </dd>
-          </a>
-      </li>
-      <li bindtap="ProDetails">
-          <a href="商品详情.html">
-              <dt class="zoomImage" style="background-image:url(https://www.jhjksp.com/img/idx_three_pro2.jpg);"></dt>
-              <dd class="title">丹麦蓝罐曲奇</dd>
-              <dd class="price">
-                  <label>￥888.00</label>
-              </dd>
-          </a>
-      </li>
-      <li bindtap="ProDetails">
-          <a href="商品详情.html">
-              <dt class="zoomImage" style="background-image:url(https://www.jhjksp.com/img/idx_three_pro3.jpg);"></dt>
-              <dd class="title">小老板面包干</dd>
-              <dd class="price">
-                  <label>￥888.00</label>
-              </dd>
-          </a>
+          </navigator>
       </li>
   </ul>
 </view>

@@ -29,6 +29,9 @@ Page({
     Height: "",    //这是swiper要动态设置的高度属性
     listData: [], //倒计时
       promotion_goods:[],//促销商品
+      meiritehui_goods:[],//每日特惠
+      shoucang_goods:[],//收藏
+      yingji_goods:[],//应季
 
     //底部导航
     active: 0,
@@ -108,7 +111,11 @@ Page({
     });
     this.setCountDown();
     this.cat_list_one();
-    this.get_goods_promotion()
+    //type:1买赠；2.满减；3：买促；4.每日特惠；5.应季商品；6.收藏商品）
+    this.get_goods(4,d=>this.setData({meiritehui_goods: d}));
+      this.get_goods(3,d=>this.setData({promotion_goods: d}));
+      this.get_goods(6,d=>this.setData({shoucang_goods: d}));
+      this.get_goods(5,d=>this.setData({yingji_goods: d}));
   },
 
   /*倒计时*/
@@ -220,9 +227,7 @@ Page({
   },
 
     //促销商品
-    get_goods_promotion(){
-        util.get('/index/get_goods_promotion?type='+1).then(data=>{
-            this.setData({promotion_goods: data});
-        });
+    get_goods(type,fn){
+        util.get('/index/get_goods_promotion?type='+type).then(data=>fn(data));
     }
 })
