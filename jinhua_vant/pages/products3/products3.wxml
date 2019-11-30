@@ -1,0 +1,98 @@
+<view class="container2">
+  <!-- tab导航栏 -->
+  <!-- scroll-left属性可以控制滚动条位置 -->
+  <!-- scroll-with-animation滚动添加动画过渡 -->
+  <scroll-view scroll-x="true" class="nav" scroll-left="{{navScrollLeft}}" scroll-with-animation="{{true}}">
+    <block wx:for="{{navData}}" wx:for-index="idx" wx:for-item="navItem" wx:key="idx">
+      <view class="nav-item {{currentTab == idx ?'active':''}}" data-current="{{idx}}" bindtap="switchNav">{{navItem.text}}</view>
+    </block>
+  </scroll-view>
+  <!-- 页面内容 -->
+  <swiper class="tab-box" current="{{currentTab}}" duration="300" bindchange="switchTab">
+    <swiper-item wx:for="{{[0,1,2,3,4,5,6,7,8]}}" wx:for-item="tabItem" wx:for-index="idx" wx:key="idx" class="tab-content">
+      <view style="display:none">{{tabItem}}</view>
+      <view class='brand_select iconfont icon-shaixuan2' bindtap="toShowBrand">{{barndName}}</view>
+      
+    </swiper-item>
+  </swiper>
+  <view class='product_list'>
+        <dl class='clear'>
+          <dt style="background-image:url(https://www.jhjksp.com/img/idx_three_pro.png);" bind:tap='toProDetails'>
+            <van-transition show="{{ animateShow }}" name="fade-up">
+              <view class='smile'>
+                <span class='iconfont icon-xiaolian3 circle'></span>
+              </view>
+            </van-transition>
+          </dt>
+          <dd class='title'>奥利奥巧脆卷</dd>
+          <dd class='details'>100g*24 /箱 库存充足</dd>
+          <dd class='price clear'>
+            <span>￥</span>
+            <label>1800</label>
+            <em>￥3000</em>
+            <view class="picker_num" bind:click="showPopup">
+              <van-cell class='cart_num iconfont' title='{{selectNum}}' bind:click="showPopup" />
+            </view>
+          </dd>
+          <dd class='coupon'>
+            <span>满赠</span>
+          </dd>
+          <dd class='gray_font clear'>
+            <span>生产:2019-09-09 到期:2020-09-09</span>
+            <label>单位:包</label>
+          </dd>
+        </dl>
+      </view>
+</view>
+
+<!--品牌分类-->
+<view class="show_brand" wx:if="{{showBrand}}">
+  <view class='brand_select2 iconfont icon-fenleiheise'> 品牌分类</view>
+   <view class="close iconfont icon-guanbi"  bindtap="toShowBrand"></view>
+  <view class="height_12vw"></view>
+  <view class="barnds">
+    <ul>
+      <li class="{{_num == 0?'now':'option'}}" data-num = "0" bindtap="clickNum" data-text="全部品牌">全部品牌</li>
+      <li class="{{_num == 1?'now':'option'}}" data-num = "1" bindtap="clickNum" data-text="品牌名称1">品牌名称1</li>
+      <li class="{{_num == 2?'now':'option'}}" data-num = "2" bindtap="clickNum" data-text="品牌名称2">品牌名称2</li>
+      <li class="{{_num == 3?'now':'option'}}" data-num = "3" bindtap="clickNum" data-text="品牌名称3">品牌名称3</li>
+      <li class="{{_num == 4?'now':'option'}}" data-num = "4" bindtap="clickNum" data-text="品牌名称4">品牌名称4</li>
+      <li class="{{_num == 5?'now':'option'}}" data-num = "5" bindtap="clickNum" data-text="品牌名称5">品牌名称5</li>
+    </ul>
+  </view>
+</view>
+
+<!--选择数量-->
+<van-popup show="{{ show }}" position="bottom" bind:close="onClose">
+  <van-picker show-toolbar title="请选择数量" columns="{{ columns }}" bind:cancel="onCancel" bind:confirm="onConfirm" />
+</van-popup>
+
+<!--底部导航-->
+<view class="height_50px"></view>
+<van-tabbar active="{{ active }}" bind:change="onChange">
+  <van-tabbar-item>
+    <image slot="icon" src="{{ nav_ico1.normal }}" mode="aspectFit" />
+    <image slot="icon-active" src="{{ nav_ico1.active }}" mode="aspectFit" />
+    首页
+  </van-tabbar-item>
+  <van-tabbar-item>
+    <image slot="icon" src="{{ nav_ico2.normal }}" mode="aspectFit" />
+    <image slot="icon-active" src="{{ nav_ico2.active }}" mode="aspectFit" />
+    分类
+  </van-tabbar-item>
+  <van-tabbar-item>
+    <image slot="icon" src="{{ nav_ico3.normal }}" mode="aspectFit" />
+    <image slot="icon-active" src="{{ nav_ico3.active }}" mode="aspectFit" />
+    订单
+  </van-tabbar-item>
+  <van-tabbar-item>
+    <image slot="icon" src="{{ nav_ico4.normal }}" mode="aspectFit" />
+    <image slot="icon-active" src="{{ nav_ico4.active }}" mode="aspectFit" />
+    购物车
+  </van-tabbar-item>
+  <van-tabbar-item>
+    <image slot="icon" src="{{ nav_ico5.normal }}" mode="aspectFit" />
+    <image slot="icon-active" src="{{ nav_ico5.active }}" mode="aspectFit" />
+    我的
+  </van-tabbar-item>
+</van-tabbar>
