@@ -1,4 +1,6 @@
 // pages/pro_details/pro_details.js
+const util = require('../../utils/util.js');
+
 Page({
  
   toHome: function (options) {
@@ -83,7 +85,7 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-      this.goods_info(options.pid);
+      this.goods_info(options.id);
   },
 
   /**
@@ -135,7 +137,7 @@ Page({
 
   },
     goods_info(pid){
-        util.get(`/goods_info?ptypeId=${pid}`).then(data=>{
+        util.get(`/index/goods_info?ptypeId=${pid}`).then(data=>{
             var productData = data;
             this.setData({productData: productData});
         });
