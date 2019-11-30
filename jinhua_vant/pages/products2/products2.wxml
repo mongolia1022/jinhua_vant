@@ -7,15 +7,8 @@
       <view class="nav-item {{currentTab == item.typeId ?'active':''}}" data-current="{{item.typeId}}" bindtap="switchNav">{{item.FullName}}</view>
     </block>
   </scroll-view>
-  <!-- 页面内容 -->
-  <swiper class="tab-box" current="{{currentTab}}" duration="300" bindchange="switchTab">
-    <swiper-item wx:for="{{navData}}" wx:for-item="tabItem" wx:for-index="idx" wx:key="idx" class="tab-content">
-      <view style="display:none">{{tabItem}}</view>
-      <view class='brand_select iconfont icon-shaixuan2' bindtap="toShowBrand">{{barndName}}</view>
-
-    </swiper-item>
-  </swiper>
-  <view class='brand_select iconfont icon-shaixuan2' bindtap="toShowBrand" >全部品牌</view>
+  
+  <view class='brand_select iconfont icon-shaixuan2' bindtap="toShowBrand" style="margin-top:12vw;" > {{barndName}}</view>
   <!-- 列表 -->
   <view class='product_list'>
     <block wx:for="{{productsData}}" wx:key="typeId">
@@ -60,7 +53,7 @@
     <ul>
       <li class="{{_num == 0?'now':'option'}}" data-num = "{{0}}" bindtap="clickNum" data-text="全部品牌">全部品牌</li>
       <block wx:for="{{brandData}}" wx:for-index="idx" wx:key="idx">
-        <li class="{{_num == 2?'now':'option'}}" data-num = "{{item.typeId}}" bindtap="clickNum" data-text="品牌名称2">{{item.FullName}}</li>
+        <li class="{{_num == item.typeId?'now':'option'}}" data-num = "{{item.typeId}}" bindtap="clickNum" data-text="{{item.FullName}}">{{item.FullName}}</li>
       </block>
     </ul>
   </view>
