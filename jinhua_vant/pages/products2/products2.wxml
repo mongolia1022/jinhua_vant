@@ -15,6 +15,7 @@
 
     </swiper-item>
   </swiper>
+  <view class='brand_select iconfont icon-shaixuan2' bindtap="toShowBrand" >全部品牌</view>
   <!-- 列表 -->
   <view class='product_list'>
     <block wx:for="{{productsData}}" wx:key="typeId">
@@ -33,8 +34,8 @@
             <span>￥</span>
             <label>{{item.PreBuyPrice1}}</label>
             <em>￥{{item.PreBuyPrice1}}</em>
-            <view class="picker_num" bind:click="showPopup">
-              <van-cell class='cart_num iconfont' title='{{selectNum}}' bind:click="showPopup" />
+            <view class="picker_num">
+              <van-cell class='cart_num iconfont' title='{{selectNum}}' catchtap="showPopup" />
             </view>
           </dd>
           <dd class='coupon'>

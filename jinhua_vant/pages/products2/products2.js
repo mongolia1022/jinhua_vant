@@ -236,7 +236,7 @@ Page({
      */
     goods_list(cid,page=10){
       var params=cid?'/ptype_category_id/'+cid:'';
-        util.get(`/index/goods_list/page=${page}${params}`).then(data=>{
+        util.get(`/index/goods_list/page/1${params}`).then(data=>{
             if (!data.body) {
               return;
             }
