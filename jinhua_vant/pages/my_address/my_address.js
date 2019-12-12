@@ -1,4 +1,5 @@
 // pages/my_address/my_address.js
+const util = require('../../utils/util.js');
 Page({
 
   toEditAddress: function (options) {
@@ -8,7 +9,7 @@ Page({
    * 页面的初始数据
    */
   data: {
-
+      addressList:[]
   },
 
   /**
@@ -29,7 +30,12 @@ Page({
    * 生命周期函数--监听页面显示
    */
   onShow: function () {
+      var mid=util.getMid();
+      if(!mid){
+          return;
+      }
 
+      this.user_address_list(mid);
   },
 
   /**
@@ -65,5 +71,10 @@ Page({
    */
   onShareAppMessage: function () {
 
-  }
+  },
+    user_address_list:function(mid){
+        util.get('/index/user_address_list?btypeid='+mid).then(data=>{
+            this.setData({addressList: data});
+        });
+    }
 })

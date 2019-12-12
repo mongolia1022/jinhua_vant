@@ -1,4 +1,5 @@
 // pages/customer_info/customer_info.js
+
 Page({
 
   /**
@@ -62,5 +63,6 @@ Page({
    */
   onShareAppMessage: function () {
 
-  }
+  },
+
 })

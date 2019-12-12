@@ -3,11 +3,11 @@
         <view class='login_box'>
           <view class='login_box_txb'>
             <span><image src="https://www.jhjksp.com/img/ico_user.jpg" mode="widthFix" /></span>
-            <label><input name="name" type='text' placeholder='请输入用户名' /></label>
+            <label><input name="name" type='text' placeholder='请输入用户名' value="深圳市新城创业超级超市有限公司" /></label>
           </view>
           <view class='login_box_txb'>
             <span><image src="https://www.jhjksp.com/img/ico_nock.jpg" mode="widthFix" /></span>
-            <label><input name="pw" type='password' placeholder='请输入用密码' /></label>
+            <label><input name="pw" type='password' placeholder='请输入用密码' value="123456" /></label>
           </view>
           <view class='login_box_btn'>
             <button formType="submit">登录</button>

@@ -91,6 +91,28 @@ function get(url,header={ 'content-type': 'application/json'}){
     return promise;
 }
 
+function gotoLogin(){
+    wx.navigateTo({url: '/pages/login/login'})
+}
+
+function getMid() {
+    var userInfo = wx.getStorageSync("userInfo");
+    if (!userInfo) {
+        gotoLogin();
+        return null;
+    }
+
+    var timestamp = Date.parse(new Date());
+    var expiration = wx.getStorageSync("login_expire");
+    if (expiration < timestamp) {
+        gotoLogin();
+        return null;
+    }
+
+    var mid = userInfo.typeId;
+    return mid;
+}
+
 module.exports = {
-  formatTime: formatTime, post:post,get:get
+  formatTime: formatTime, post:post,get:get,getMid:getMid
 }

@@ -1,4 +1,5 @@
 // pages/mine/mine.js
+const util = require('../../utils/util.js');
 Page({
   /*页面跳转*/
   toFeedback: function (options) {
@@ -35,7 +36,8 @@ Page({
     nav_ico5: {
       normal: 'https://www.jhjksp.com/img/nav5.png',
       active: 'https://www.jhjksp.com/img/nav5_2.png'
-    }
+    },
+      userInfo:{}
   },
   /*底部导航*/
   onChange(event) {
@@ -75,7 +77,12 @@ Page({
    * 生命周期函数--监听页面显示
    */
   onShow: function () {
+      var mid=util.getMid();
+      if(!mid){
+          return;
+      }
 
+      this.user_info(mid);
   },
 
   /**
@@ -111,5 +118,11 @@ Page({
    */
   onShareAppMessage: function () {
 
-  }
+  },
+    user_info:function(mid){
+        util.get('/index/user_info?btypeid='+mid).then(data=>{
+          console.log(data.body.ent)
+            this.setData({userInfo: data.body.ent});
+        });
+    }
 })

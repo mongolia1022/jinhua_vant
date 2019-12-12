@@ -1,7 +1,10 @@
 {
   "pages": [
-    "pages/products2/products2",
+    "pages/my_order/my_order",
+    "pages/my_address/my_address",
+    "pages/edit_address/edit_address",
     "pages/home/home",
+    "pages/products2/products2",
     "pages/products3/products3",
     "pages/feedback/feedback",
     "pages/products/products",
@@ -12,17 +15,14 @@
     "pages/test3/test3",
     "pages/new_user/new_user",
     "pages/my_client/my_client",
-    "pages/my_order/my_order",
     "pages/mine/mine",
     "pages/pro_details_active/pro_details_active",
     "pages/pro_details/pro_details",
-    "pages/my_address/my_address",
-    "pages/edit_address/edit_address",
     "pages/customer_info/customer_info",
-    "pages/login/login",
     "pages/test2/index",
     "pages/test/test",
-    "pages/logs/logs"
+    "pages/logs/logs",
+    "pages/login/login"
   ],
   "window": {
     "backgroundTextStyle": "light",

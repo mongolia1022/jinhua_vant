@@ -1,16 +1,16 @@
 <view class='mine_t'>
-  <view class="mine_t_company">江西优之港商业连锁有限公司</view>
+  <view class="mine_t_company">{{userInfo.FullName}}</view>
   <view class="mine_t_company_b">欢迎您的使用</view>
   <view class="mine_t_money">
     <ul>
-      <li>
+      <!--<li>
         <span>0.00</span>
         <label>现金用户</label>
       </li>
       <li>
         <span>0.00</span>
         <label>优惠券 用户</label>
-      </li>
+      </li>-->
     </ul>
   </view>
 </view>

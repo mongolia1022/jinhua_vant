@@ -1,4 +1,6 @@
 // pages/products/products.js
+const util = require('../../utils/util.js');
+
 Page({
 
   /*页面跳转*/
@@ -69,7 +71,7 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-    this.user_order_list(options.btypeid);
+
   },
 
   /**
@@ -83,7 +85,12 @@ Page({
    * 生命周期函数--监听页面显示
    */
   onShow: function () {
+      var mid=util.getMid();
+      if(!mid){
+          return;
+      }
 
+      this.user_order_list(mid);
   },
 
   /**

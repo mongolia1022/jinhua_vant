@@ -67,8 +67,29 @@ Page({
   },
     formSubmit: function (e) {
     var val=e.detail.value;
-        util.post('/index/login',{FullName:val.name,password:val.pw}).then(data=>{
+        util.post('/index/login',{FullName:val.name,password:val.pw},{ 'content-type': 'application/x-www-form-urlencoded' }).then(data=>{
+            if (!data.body) {
+                wx.showToast({
+                    title: '用户名或密码错误',
+                    icon: 'none',
+                    duration: 2000
+                })
+            }
 
+            var timestamp=Date.parse(new Date());
+            var expiration = timestamp + 2592000000;//2592000秒（一个月）
+            wx.setStorageSync("login_expire",expiration);
+            wx.setStorageSync("userInfo",data.body.ent);
+            wx.showToast({
+                title: '登录成功',
+                icon: 'success',
+                duration: 1000,
+                success:function(){
+                    wx.redirectTo({
+                        url: '/pages/home/home'
+                    })
+                }
+            })
         });
     },
 })
