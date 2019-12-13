@@ -1,7 +1,9 @@
 {
   "pages": [
-    "pages/my_order/my_order",
     "pages/my_address/my_address",
+    "pages/pro_details/pro_details",
+    "pages/pro_details_active/pro_details_active",
+    "pages/my_order/my_order",
     "pages/edit_address/edit_address",
     "pages/home/home",
     "pages/products2/products2",
@@ -16,8 +18,6 @@
     "pages/new_user/new_user",
     "pages/my_client/my_client",
     "pages/mine/mine",
-    "pages/pro_details_active/pro_details_active",
-    "pages/pro_details/pro_details",
     "pages/customer_info/customer_info",
     "pages/test2/index",
     "pages/test/test",

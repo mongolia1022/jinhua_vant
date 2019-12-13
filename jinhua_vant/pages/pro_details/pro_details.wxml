@@ -19,7 +19,26 @@
 <view class='pro_price clear'>
   <view class='pro_price2_font'><font>￥</font><span>300</span>/包</view>
 </view>
+
+
+
 <view class='pro_title'>{{FullName}}</view>
+
+<!--活动产品倒数-->
+<view class='pro_active_price'>
+  <view class='pro_price_font'><font>￥</font><span>300</span></view>
+  <view class='pro_price_label'><image src="https://www.jhjksp.com/img/ico_price_label.png" mode="widthFix" /></view>
+  <view class='pro_price_origin'><font>原价格</font><span>￥1800</span> </view>
+  <view class='pro_count'>
+    <view class='pro_count_t'>
+      <view>距活动结束仅剩</view>
+      <span wx:for="{{listData}}" wx:key="id">
+        <font>{{item.countDownhh}}</font>:<font>{{item.countDownmm}}</font>:<font>{{item.countDownss}}</font>
+      </span>
+    </view>
+  </view>
+</view>
+
 
 <view class='txb_all'>
   <View class='txb'>
