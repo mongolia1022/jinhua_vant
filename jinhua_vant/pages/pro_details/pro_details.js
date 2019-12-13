@@ -17,9 +17,7 @@ Page({
   data: {
     //banner
     slider: [
-      { picUrl: 'https://www.jhjksp.com/img/pro_pic.jpg' },
-      { picUrl: 'https://www.jhjksp.com/img/pro_pic.jpg' },
-      { picUrl: 'https://www.jhjksp.com/img/pro_pic.jpg' },
+
     ],
     swiperCurrent: 0,
     Height: "",    //这是swiper要动态设置的高度属性
@@ -138,8 +136,8 @@ Page({
   },
     goods_info(pid){
         util.get(`/index/goods_info?ptypeId=${pid}`).then(data=>{
-            var productData = data;
-            this.setData({productData: productData});
+            console.log(data.pic);
+            this.setData({productData: data,slider:[data.pic]});
         });
     }
 })
