@@ -14,13 +14,25 @@ Page({
   data: {
     tabActive: 0,
     show: false, 
-    proClass: [
-      { proClassName: '全部',type:0 },
-      { proClassName: '待付款',type:1 },
-      { proClassName: '代收款',type:2 },
-      { proClassName: '已完成',type:3 },
-      { proClassName: '已取消',type:4 },
+    navData: [
+      {
+        text: '全部'
+      },
+      {
+        text: '待付款'
+      },
+      {
+        text: '代收款'
+      },
+      {
+        text: '已完成'
+      },
+      {
+        text: '已取消'
+      }
     ],
+    currentTab: 0,
+    navScrollLeft: 0,
 
     //底部导航
     active: 2,
@@ -71,7 +83,31 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-
+    
+  },
+  switchNav(event) {
+    var cur = event.currentTarget.dataset.current;
+    //每个tab选项宽度占1/5
+    var singleNavWidth = this.data.windowWidth / 5;
+    //tab选项居中                            
+    this.setData({
+      navScrollLeft: (cur - 2) * singleNavWidth
+    })
+    if (this.data.currentTab == cur) {
+      return false;
+    } else {
+      this.setData({
+        currentTab: cur
+      })
+    }
+  },
+  switchTab(event) {
+    var cur = event.detail.current;
+    var singleNavWidth = this.data.windowWidth / 5;
+    this.setData({
+      currentTab: cur,
+      navScrollLeft: (cur - 2) * singleNavWidth
+    });
   },
 
   /**
