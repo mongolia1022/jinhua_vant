@@ -347,7 +347,8 @@ swiper-item image{width: 100%;}
 .cart_list dl .cart_l .van-checkbox__icon{width: 6vw; height: 6vw; line-height: 8vw; margin-top: 11vw; font-size: 120%;}
 
 
-.cart_list dl dt{width: 26vw; height: 26vw; float: left; background: #e5e5e5; border-radius: 1vw; display: block;  overflow:hidden; background-position: center center; background-repeat: no-repeat; -webkit-background-size:cover; -moz-background-size:cover; background-size:cover;} 
+.cart_list dl dt{width: 26vw; height: 26vw; float: left; background: #e5e5e5; border-radius: 1vw; display: block;  overflow:hidden; background-position: center center; background-repeat: no-repeat; -webkit-background-size:cover; -moz-background-size:cover; background-size:cover; position: relative;} 
+.cart_list dl dt span{width: 8vw; height: 8vw; text-align: center; line-height: 8vw; background: rgba(0, 0, 0, 0.6); border-top-left-radius: 1vw; position: absolute; bottom: 0; right: 0; color: #fff; font-size:0.7rem;} 
 .cart_list dl dd{width: 54vw; float:right; display: block; position: relative;}
 .cart_list dl dd.title{margin-bottom: 1vw;}
 .cart_list dl dd.details{color: #7f8699; font-size: 80%;}
