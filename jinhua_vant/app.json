@@ -1,11 +1,11 @@
 {
   "pages": [
-    "pages/my_address/my_address",
+    "pages/home/home",
+    "pages/test2/index",
     "pages/pro_details/pro_details",
     "pages/pro_details_active/pro_details_active",
     "pages/my_order/my_order",
     "pages/edit_address/edit_address",
-    "pages/home/home",
     "pages/products2/products2",
     "pages/products3/products3",
     "pages/feedback/feedback",
@@ -19,10 +19,10 @@
     "pages/my_client/my_client",
     "pages/mine/mine",
     "pages/customer_info/customer_info",
-    "pages/test2/index",
     "pages/test/test",
     "pages/logs/logs",
-    "pages/login/login"
+    "pages/login/login",
+    "pages/my_address/my_address"
   ],
   "window": {
     "backgroundTextStyle": "light",

@@ -10,7 +10,7 @@
 
 <view class="btns pdt_10vw">
   <van-button type="primary" size="large" round bind:click="user_address_add">保存</van-button>
-  <van-button plain type="danger" size="large" round>删除</van-button>
+  <van-button plain type="danger" size="large" round bind:click="user_address_del">删除</van-button>
 </view>
 
 

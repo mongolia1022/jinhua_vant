@@ -3,6 +3,7 @@ const util = require('../../utils/util.js');
 var areaList = require('area.js')
 Page({
     isEdit:false,
+    id:null,
   /**
    * 页面的初始数据
    */
@@ -101,53 +102,76 @@ Page({
   },
     //保存地址
     user_address_add: function () {
-if(this.isEdit){
-//更新
+        var url = this.isEdit ? "/index/user_address_edit" : "/index/user_address_add";
 
-}else {
-  //新增
-    var params = {
-        btypeid: util.getMid(),
-        name: this.data.concatMember,
-        phone: this.data.phone,
-        address: this.data.setArea + this.data.address
-    }
-    util.post('/index/user_address_add', params, {'content-type': 'application/x-www-form-urlencoded'}).then(data => {
-        if (data == '添加失败') {
+        //新增
+        var params = {
+            btypeid: util.getMid(),
+            name: this.data.concatMember,
+            phone: this.data.phone,
+            address: this.data.setArea + this.data.address,
+            is_top: this.data.checked ? 1 : 0
+        }
+        if (this.isEdit) {
+            params.id=this.id;
+        }
+        util.post(url, params, {'content-type': 'application/x-www-form-urlencoded'}).then(data => {
+            if (data == '添加失败') {
+                wx.showToast({
+                    title: '操作失败',
+                    icon: 'none',
+                    duration: 2000,
+                });
+
+                return;
+            }
+
             wx.showToast({
-                title: data,
-                icon: 'fail',
-                duration: 1000,
-                success: function () {
-                    wx.redirectTo({
-                        url: '/pages/my_address/my_address'
-                    })
+                title: '操作成功',
+                icon: 'success',
+                complete: function () {
+                    setTimeout(function() {
+                        wx.navigateTo({
+                            url: '/pages/my_address/my_address',
+                        })
+                    }, 1000);
                 }
             });
-
-            return;
-        }
-
-        wx.showToast({
-            title: '新增成功',
-            icon: 'success',
-            duration: 2000,
-            success: function () {
-                wx.redirectTo({
-                    url: '/pages/my_address/my_address'
-                })
-            }
         });
-    });
-}
     },
 
     user_address_info: function(id){
         util.get('/index/user_address_info?id='+id).then(data=>{
+            this.id=data.id;
             var area=data.address.match(/.+?(省|市|自治区|自治州|县|区)/g);
-            console.log(area);
-            this.setData({setArea:area,address:data.address.replace(/.+?(省|市|自治区|自治州|县|区)/g,''),concatMember:data.name,phone:data.phone})
+            this.setData({setArea:area.join(""),address:data.address.replace(/.+?(省|市|自治区|自治州|县|区)/g,''),concatMember:data.name,phone:data.phone})
+        });
+    },
+
+//删除
+    user_address_del: function () {
+        util.post("/index/user_address_edit?id="+this.id).then(data => {
+            if (data == '删除失败') {
+                wx.showToast({
+                    title: '删除失败',
+                    icon: 'none',
+                    duration: 1000,
+                });
+
+                return;
+            }
+
+            wx.showToast({
+                title: '删除成功',
+                icon: 'success',
+                complete: function () {
+                    setTimeout(function() {
+                        wx.navigateTo({
+                            url: '/pages/my_address/my_address',
+                        })
+                    }, 1000);
+                }
+            });
         });
     }
-
 })

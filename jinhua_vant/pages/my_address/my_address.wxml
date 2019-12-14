@@ -8,7 +8,7 @@
         <label>{{item.phone}}</label>
       </view>
       <view class='address_list_l_b clear default'>
-        <span>默认</span>
+        <span wx:if="{{item.is_top==1}}">默认</span>
         <label>{{item.address}}</label>
       </view>
     </view>
