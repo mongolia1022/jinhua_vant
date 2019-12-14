@@ -3,7 +3,22 @@ const util = require('../../utils/util.js');
 Page({
   /*页面跳转*/
   toSubmitOrder: function (options) {
-    wx.navigateTo({ url: '../submit_order/submit_order' })
+      var params = [];
+      this.data.selectGoods.map(select=>{
+          var count=0;
+          this.data.goods.filter(g=>g.id==select).map(g=>{
+              count+=g.count;
+          });
+          params.push({id: select, count: count});
+      });
+      if (params.length == 0) {
+          wx.showToast({
+              title: '请勾选需要购买的商品',
+              icon: 'none'
+          });
+          return;
+      }
+      wx.navigateTo({url: `/pages/submit_order/submit_order?goods=${JSON.stringify(params)}`})
   },
   /**
    * 页面的初始数据
@@ -36,7 +51,8 @@ Page({
     },
       goods:[],
       totalAmount:0,
-      totalCount:0
+      totalCount:0,
+        selectGoods:[]
     },
   /*底部导航*/
   onChange(event) {
@@ -81,7 +97,10 @@ Page({
                   this.resetCartListCache(good);
               }
           });
-          this.resetTotalCount(goods);
+          var {selectGoods}=this.data;
+          selectGoods.push(this.curItem.id);
+
+          this.setData({selectGoods:selectGoods});
       }
     this.setData({ show: false,goods:goods });
 
@@ -95,16 +114,13 @@ Page({
   },
 
   /*复选框*/
-  onSelect(event) {
-    this.setData({
-      result: event.detail
-    });
-  },
   onSelectAll(event) {
+      var cartList = wx.getStorageSync("cartList") || [];
+      var result=cartList.map(c => c.id);
     this.setData({
       checked: event.detail,
-      result: ['a'],
-    });
+      selectGoods: event.detail?result:[],
+    },()=>this.loadGoods(cartList));
   },
   /**
    * 生命周期函数--监听页面加载
@@ -168,24 +184,36 @@ Page({
 
     //计算商品
     loadGoods(cartList) {
-        var goods=[];
-        cartList.map(cartItem=>{
-            this.goods_info(cartItem.id).then(data=>{
-                data=data.body.ent;
-                data.promotion.typeName=util.promotionMap(data.promotion.type);
-                goods.push({id:data.typeId,good:data,count:cartItem.count});
+        var goods = [];
+        if (cartList.length > 0) {
+            cartList.map(cartItem => {
+                this.goods_info(cartItem.id).then(data => {
+                    data = data.body.ent;
+                    data.promotion.typeName = util.promotionMap(data.promotion.type);
+                    goods.push({id: data.typeId, good: data, count: cartItem.count});
 
-                this.setData({goods: goods});
+                    this.setData({goods: goods});
+                    this.resetTotalCount(goods);
+                });
             });
-
+        } else {
+            this.setData({goods: goods});
             this.resetTotalCount(goods);
-        });
+        }
     },
     resetTotalCount(goods) {
         var totalAmount=0;
         var totalCount=0;
 
-        goods.map(item=>{
+        goods.filter(g=>{
+            var {selectGoods} = this.data;
+            for (var i=0;i<selectGoods.length;i++) {
+                if (selectGoods[i] == g.id) {
+                    return true;
+                }
+            }
+            return false;
+        }).map(item=>{
             totalCount+=item.count;
             totalAmount+=item.count*item.good.PreBuyPrice1;
         });
@@ -209,5 +237,30 @@ Page({
         })
 
         wx.setStorageSync("cartList",cartList);
+        this.loadGoods(cartList);
+    },
+    delCartItem(e) {
+        let{item}=e.currentTarget.dataset;
+        var cartList= wx.getStorageSync("cartList")||[];
+        cartList=cartList.filter(c=>c.id!=item.id);
+        wx.setStorageSync("cartList",cartList);
+        this.loadGoods(cartList);
+    },
+    selectGood(e) {
+        var selectGoods = e.detail;
+
+        this.setData({selectGoods:selectGoods});
+
+        var goods=this.data.goods;
+        var newList=goods.filter(g => {
+            for (var i=0;i<selectGoods.length;i++) {
+                if (selectGoods[i] == g.id) {
+                    return true;
+                }
+            }
+            return false;
+        });
+
+        this.loadGoods(wx.getStorageSync("cartList") || []);
     }
 })

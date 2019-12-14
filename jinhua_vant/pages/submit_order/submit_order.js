@@ -43,6 +43,11 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
+      var mid=util.getMid();
+      if(!mid){
+          return;
+      }
+
     console.log(options.goods)
       var cartList=JSON.parse(options.goods);
       this.loadGoods(cartList);
@@ -159,6 +164,8 @@ Page({
 
                 return;
             }
+            //清空购物车
+            wx.setStorageSync("cartList",[]);
 
             wx.showToast({
                 title: '订单创建成功',

@@ -1,14 +1,13 @@
-<van-checkbox-group value="{{ result }}" bind:change="onSelect">
+<van-checkbox-group value="{{ selectGoods }}" bind:change="selectGood">
 
   <view class='cart_list'>
-    <dl class='clear' wx:for="{{goods}}">
+    <dl class='clear' wx:for="{{goods}}"  wx:key="id">
       <view class="cart_l">
-        <van-checkbox name="a"></van-checkbox>
+        <van-checkbox name="{{item.id}}"></van-checkbox>
       </view>
       <navigator url="../pro_details/pro_details?cid={{item.good.typeId}}">
-      <dt style="background-image:url(https://www.jhjksp.com/img/idx_three_pro.png);"></dt>
-      <dt style="background-image:url(https://www.jhjksp.com/img/idx_three_pro.png);">
-        <span class='iconfont icon-shanchu1'></span>
+      <dt style="background-image:url({{item.good.pic}})">
+        <span class='iconfont icon-shanchu1' catchtap="delCartItem" data-item="{{item}}"></span>
       </dt>
       <dd class='title'>{{item.good.FullName}}</dd>
       <dd class='details'>{{item.good.Standard}} 库存{{item.good.Qty}}</dd>
@@ -40,7 +39,7 @@
   </view>
   <view class="cart_b_m">
     <span>合计:<font>￥{{totalAmount}}</font></span>
-    <label>共{{goods.length}}种{{totalCount}}件商品</label>
+    <label>共{{selectGoods.length}}种{{totalCount}}件商品</label>
   </view>
   <view class="cart_b_l">
     <van-checkbox value="{{ checked }}" bind:change="onSelectAll">全选</van-checkbox>

@@ -8,7 +8,6 @@ Page({
   toProDetails: function (options) {
     wx.navigateTo({ url: '../pro_details/pro_details?id='+options.currentTarget.dataset.id })
   },
-    promotionType:new Map([[1, '买赠'], [2, '满减'], [3, '买促'], [4, '每日特惠'], [5, '应季商品'],[6,'收藏商品']]),
 
     data: {
     motto: 'Hello World',
@@ -193,6 +192,7 @@ Page({
 
       this.cat_list_two(cur);
     this.goods_list(cur);
+    this.setData({barndName: "全部品牌"});
   },
   switchTab(event) {
     var cur = event.detail.current;

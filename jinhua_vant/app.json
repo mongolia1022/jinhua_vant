@@ -1,9 +1,9 @@
 {
   "pages": [
-    "pages/products2/products2",
-    "pages/cart/cart",
-    "pages/my_order/my_order",
     "pages/home/home",
+    "pages/cart/cart",
+    "pages/products2/products2",
+    "pages/my_order/my_order",
     "pages/test2/index",
     "pages/pro_details/pro_details",
     "pages/pro_details_active/pro_details_active",
