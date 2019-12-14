@@ -32,7 +32,8 @@ Page({
     //选择规格
     columns: ['500g*15包/箱', '600g*15包/箱', '700g*15包/箱', '800g*15包/箱', '900g*15包/箱'],
       productData:{},
-      cartCount:0
+      cartCount:0,
+      promotionMap:new Map([{1:"买赠"},{2:"满减"},{3:"买促"},{4:"每日特惠"},{5:"应季商品"},{6:"收藏商品"}])
   },
   /*banner*/
   swiperChange: function (e) {

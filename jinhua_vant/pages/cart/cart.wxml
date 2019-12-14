@@ -9,7 +9,7 @@
       <dd class='title'>{{item.good.FullName}}</dd>
       <dd class='details'>{{item.good.Standard}} 库存{{item.good.Qty}}</dd>
       <dd class='coupon'>
-        <span>满赠</span>
+        <span>{{promotionMap.get(item.good.promotion.type)}}</span>
       </dd>
       <dd class='price clear'>
         <span>￥</span>
