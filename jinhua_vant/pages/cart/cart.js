@@ -7,10 +7,9 @@ Page({
   },
   /**
    * 页面的初始数据
-   */
-  data: {
-    selectNum: '200',
-    columns: ['202', '204', '206', '208', '210'],
+   */      curItem:null,
+    data: {
+    columns: [],
     result: [],
     checked: false,
     //底部导航
@@ -37,7 +36,7 @@ Page({
     },
       goods:[],
       totalAmount:0,
-      totalCount:0,
+      totalCount:0
   },
   /*底部导航*/
   onChange(event) {
@@ -60,8 +59,12 @@ Page({
   },
 
   /*弹出数量*/
-  showPopup() {
-    this.setData({ show: true });
+  showPopup(e) {
+    let{item}=e.target.dataset;
+    var qty=100;//item.good.qty todo
+      this.curItem=item;
+    this.setData({ show: true,columns: this.resetColums(qty)});
+
   },
   onClose() {
     this.setData({ show: false });
@@ -70,12 +73,18 @@ Page({
   /*选项*/
   onConfirm(event) {
     const { picker, value, index } = event.detail;
-    wx.showToast({
-      title: `当前值：${value}, 当前索引：${index}`,
-      icon: 'none'
-    });
-    this.setData({ show: false });
-    this.setData({ selectNum: value });
+    var {goods}=this.data;
+      if (this.curItem != null) {
+          goods.map(good=>{
+              if (good.id == this.curItem.id) {
+                  good.count=value;
+                  this.resetCartListCache(good);
+              }
+          });
+          this.resetTotalCount(goods)
+      }
+    this.setData({ show: false,goods:goods });
+
   },
   onCancel() {
     wx.showToast({
@@ -159,23 +168,43 @@ Page({
 
     //计算商品
     loadGoods(cartList) {
-        var totalAmount=0;
         var goods=[];
-        var totalCount=0;
         cartList.map(cartItem=>{
-            totalCount+=cartItem.count;
-            this.setData({totalCount:totalCount});
-
             this.goods_info(cartItem.id).then(data=>{
-                console.log("then");
                 data=data.body.ent;
                 goods.push({id:data.typeId,good:data,count:cartItem.count});
 
-                totalAmount+=cartItem.count*data.PreBuyPrice1;
                 this.setData({goods: goods});
-                this.setData({totalAmount:totalAmount});
             });
-        });
 
+            this.resetTotalCount(goods);
+        });
+    },
+    resetTotalCount(goods) {
+        var totalAmount=0;
+        var totalCount=0;
+
+        goods.map(item=>{
+            totalCount+=item.count;
+            totalAmount+=item.count*item.good.PreBuyPrice1;
+        });
+        this.setData({totalCount:totalCount,totalAmount:totalAmount});
+    },
+    resetColums(count) {
+        var arr1 = [];
+        for(var i=0;i<count;i++){
+            arr1.push(i);
+        }
+        return arr1;
+    },
+    resetCartListCache(good){
+       var cartList= wx.getStorageSync("cartList")||[];
+        cartList.map(item=>{
+          if(item.id==good.id){
+            item.count=good.count;
+          }
+        })
+
+        wx.setStorageSync("cartList",cartList);
     }
 })
