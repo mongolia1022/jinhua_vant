@@ -5,22 +5,25 @@
       <view class="cart_l">
         <van-checkbox name="a"></van-checkbox>
       </view>
+      <navigator url="../pro_details/pro_details?cid={{item.good.typeId}}">
+      <dt style="background-image:url(https://www.jhjksp.com/img/idx_three_pro.png);"></dt>
       <dt style="background-image:url(https://www.jhjksp.com/img/idx_three_pro.png);">
         <span class='iconfont icon-shanchu1'></span>
       </dt>
       <dd class='title'>{{item.good.FullName}}</dd>
       <dd class='details'>{{item.good.Standard}} 库存{{item.good.Qty}}</dd>
       <dd class='coupon'>
-        <span>满赠</span>
+        <span>{{item.good.promotion.typeName}}</span>
       </dd>
       <dd class='price clear'>
         <span>￥</span>
         <label>{{item.good.PreBuyPrice1*item.count}}</label>
         <!--<em>￥3000</em>-->
         <view class="picker_num2 iconfont">
-          <van-cell class='cart_num' title='{{item.count}}' bind:click="showPopup" data-item="{{item}}"/>
+          <van-cell class='cart_num' title='{{item.count}}' catchtap="showPopup" data-item="{{item}}"/>
         </view>
       </dd>
+      </navigator>
      <!-- <dd class='gray_font clear'>
         <span>特价:16元/盒(门店必须零售价:19.9元/盒活动)</span>
       </dd>-->

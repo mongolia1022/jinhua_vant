@@ -3,6 +3,7 @@ const util = require('../../utils/util.js');
 
 
 Page({
+    curGood:{},
   /*页面跳转*/
   toProDetails: function (options) {
     wx.navigateTo({ url: '../pro_details/pro_details?id='+options.currentTarget.dataset.id })
@@ -98,8 +99,10 @@ Page({
   },
 
   /*弹出数量*/
-  showPopup() {
-    this.setData({ show: true });
+  showPopup(e) {
+    this.curGood=e.target.dataset.good;
+    var qty=100;
+    this.setData({ show: true,columns: this.resetColums(qty) });
   },
   onClose() {
     this.setData({ show: false });
@@ -114,9 +117,9 @@ Page({
       icon: 'none'
     });
     */
+      this.addCart(value);
     this.setData({ show: false });
-    this.setData({ selectNum: value });
-    this.setData({ animateShow: true });
+      this.resetCartCount(this.good);
   },
   onCancel() {
     wx.showToast({
@@ -242,9 +245,55 @@ Page({
             }
             var list = data.body.list||[];
             list.map(item=>{
-                item.promotion_name = this.promotionType.get(item.promotion);
+                item.promotion.typeName = util.promotionMap(item.promotion.type);
             })
             this.setData({productsData: list});
         });
+    },
+    addCart(count){
+        var productData=this.curGood;
+
+
+        var cartList = wx.getStorageSync("cartList")||[];
+        var exist=false;
+        cartList.map(cartItem=>{
+            if (cartItem.id == productData.typeId) {
+                cartItem.count=count;
+                exist=true;
+            }
+        });
+        if(!exist){
+            cartList.push({id:productData.typeId, count: count})
+        }
+
+        var {productsData}=this.data;
+        productsData.map(p=>{
+            if (p.typeId == productData.typeId) {
+                p.animateShow=true;
+                p.selectNum=count;
+            }
+        })
+
+        this.setData({productsData:productsData});
+        wx.setStorageSync("cartList",cartList);
+        this.resetCartCount(cartList);
+    },
+    resetColums(count) {
+        var arr1 = [];
+        for(var i=2;i<=count;i++){
+            if(i%2==0){
+                arr1.push(i);
+            }
+        }
+        return arr1;
+    },
+    resetCartCount(cartList){
+        var cartList = cartList||[];
+        var count=0;
+        cartList.map(cartItem=>{
+            count+=cartItem.count;
+        });
+        this.setData({cartCount:count})
     }
+
 })

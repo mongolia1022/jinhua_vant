@@ -15,7 +15,7 @@
       <dl class='clear' >
         <navigator url="../pro_details/pro_details?id={{item.typeId}}">
           <dt style="background-image:url(https://www.jhjksp.com/img/idx_three_pro.png);">
-            <van-transition show="{{ animateShow }}" name="fade-up">
+            <van-transition show="{{ item.animateShow }}" name="fade-up">
               <view class='smile'>
                 <span class='iconfont icon-xiaolian3 circle'></span>
               </view>
@@ -26,13 +26,13 @@
           <dd class='price clear'>
             <span>￥</span>
             <label>{{item.PreBuyPrice1}}</label>
-            <em>￥{{item.PreBuyPrice1}}</em>
+            <!--<em>￥{{item.PreBuyPrice1}}</em>-->
             <view class="picker_num">
-              <van-cell class='cart_num iconfont' title='{{selectNum}}' catchtap="showPopup" />
+              <van-cell class='cart_num iconfont' title='{{item.selectNum}}' catchtap="showPopup" data-good="{{item}}"/>
             </view>
           </dd>
           <dd class='coupon'>
-            <span>{{item.promotion_name}}</span>
+            <span>{{item.promotion.typeName}}</span>
           </dd>
           <dd class='gray_font clear'>
             <span>{{item.UsefulLifeDay}}</span>

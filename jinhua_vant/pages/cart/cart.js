@@ -37,7 +37,7 @@ Page({
       goods:[],
       totalAmount:0,
       totalCount:0
-  },
+    },
   /*底部导航*/
   onChange(event) {
     console.log(event.detail);
@@ -45,7 +45,7 @@ Page({
       wx.navigateTo({ url: '../home/home' })
     }
     if (event.detail == 1) {
-      wx.navigateTo({ url: '../products/products' })
+      wx.navigateTo({ url: '../products2/products2' })
     }
     if (event.detail == 2) {
       wx.navigateTo({ url: '../my_order/my_order' })
@@ -172,6 +172,7 @@ Page({
         cartList.map(cartItem=>{
             this.goods_info(cartItem.id).then(data=>{
                 data=data.body.ent;
+                data.promotion.typeName=util.promotionMap(data.promotion.type);
                 goods.push({id:data.typeId,good:data,count:cartItem.count});
 
                 this.setData({goods: goods});
@@ -192,8 +193,10 @@ Page({
     },
     resetColums(count) {
         var arr1 = [];
-        for(var i=0;i<count;i++){
-            arr1.push(i);
+        for(var i=2;i<=count;i++){
+            if(i%2==0){
+                arr1.push(i);
+            }
         }
         return arr1;
     },

@@ -113,6 +113,23 @@ function getMid() {
     return mid;
 }
 
+function promotionMap(type){
+    if (type == 1) {
+        return "买赠";
+    }else if (type ==2) {
+        return "满减";
+    }else if (type ==3) {
+        return "买促";
+    }else if (type ==4) {
+        return "每日特惠";
+    }else if (type ==5) {
+        return "应季商品";
+    }else if (type ==6) {
+        return "收藏商品";
+    }
+    return "";
+}
+
 module.exports = {
-  formatTime: formatTime, post:post,get:get,getMid:getMid
+  formatTime: formatTime, post:post,get:get,getMid:getMid,promotionMap:promotionMap
 }
