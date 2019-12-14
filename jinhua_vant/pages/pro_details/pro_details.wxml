@@ -16,19 +16,19 @@
 </view>
 
 
-<view class='pro_price clear'>
-  <view class='pro_price2_font'><font>￥</font><span>300</span>/包</view>
-</view>
+<!--<view class='pro_price clear'>
+  <view class='pro_price2_font'><font>￥</font><span>{{productData.PreBuyPrice1}}</span></view>
+</view>-->
 
 
 
-<view class='pro_title'>{{FullName}}</view>
+<view class='pro_title'>{{productData.FullName}}</view>
 
 <!--活动产品倒数-->
-<view class='pro_active_price'>
-  <view class='pro_price_font'><font>￥</font><span>300</span></view>
+<view class='pro_active_price' wx:if="{{productData.promotion.type}}">
+  <view class='pro_price_font'><font>￥</font><span>{{productData.PreBuyPrice1}}</span></view>
   <view class='pro_price_label'><image src="https://www.jhjksp.com/img/ico_price_label.png" mode="widthFix" /></view>
-  <view class='pro_price_origin'><font>原价格</font><span>￥1800</span> </view>
+  <!--<view class='pro_price_origin'><font>原价格</font><span>￥1800</span> </view>-->
   <view class='pro_count'>
     <view class='pro_count_t'>
       <view>距活动结束仅剩</view>
@@ -44,27 +44,27 @@
   <View class='txb'>
     <span>规格</span>
     <label class='arrow iconfont' bind:click="showPopup">
-      <van-cell title="{{Standard}}" bind:click="showPopup" />
+      <van-cell title="{{productData.Standard}}" bind:click="showPopup" />
     </label>
   </View>
   <view class='txb'>
     <span>库存</span>
-    <label>8000</label>
+    <label>{{productData.Qty}}</label>
   </view>
 </view>
 
 <view class='txb_all'>
   <view class='txb'>
     <span>产地</span>
-    <label>{{Area}}</label>
+    <label>{{productData.Area}}</label>
   </view>
   <view class='txb'>
     <span>多条码</span>
-    <label>{{EntryCode}}</label>
+    <label>{{productData.EntryCode}}</label>
   </view>
   <view class='txb'>
     <span>有效期</span>
-    <label>{{UsefulLifeDay}}</label>
+    <label>{{productData.UsefulLifeDay}}</label>
   </view>
 </view>
 
@@ -88,15 +88,15 @@
         <label>首页</label>
       </li>
       <li bindtap="toCart">
-        <view class="cart_nume circle">1</view>
+        <view class="cart_nume circle" wx:if="{{cartCount>0}}">{{cartCount}}</view>
         <span class='iconfont icon-gouwuche2'></span>
         <label>购物车</label>
       </li>
     </ul>
   </view>
   <view class='bottom_buy_btn'>
-    <Button class='cart'>加入购物车</Button>
-    <Button class='buy'>立即购买</Button>
+    <Button class='cart' bindtap="addCart">加入购物车</Button>
+    <Button class='buy' bindtap="buy">立即购买</Button>
   </view>
 </view>
 

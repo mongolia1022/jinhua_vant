@@ -1,12 +1,12 @@
 <van-checkbox-group value="{{ result }}" bind:change="onSelect">
 
   <view class='cart_list'>
-    <dl class='clear'>
+    <dl class='clear' wx:for="{{goods}}">
       <view class="cart_l">
         <van-checkbox name="a"></van-checkbox>
       </view>
       <dt style="background-image:url(https://www.jhjksp.com/img/idx_three_pro.png);"></dt>
-      <dd class='title'>糖</dd>
+      <dd class='title'>{{item.good.FullName}}</dd>
       <dd class='details'>100g*24 /箱 库存充足</dd>
       <dd class='coupon'>
         <span>满赠</span>

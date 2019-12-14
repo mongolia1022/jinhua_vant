@@ -1,4 +1,5 @@
 // pages/cart/cart.js
+const util = require('../../utils/util.js');
 Page({
   /*页面跳转*/
   toSubmitOrder: function (options) {
@@ -33,7 +34,10 @@ Page({
     nav_ico5: {
       normal: 'https://www.jhjksp.com/img/nav5.png',
       active: 'https://www.jhjksp.com/img/nav5_2.png'
-    }
+    },
+      goods:[],
+      totalAmount:0,
+      totalCount:0,
   },
   /*底部导航*/
   onChange(event) {
@@ -97,7 +101,8 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-
+      var cartList = wx.getStorageSync("cartList")||[];
+      this.loadGoods(cartList);
   },
 
   /**
@@ -147,5 +152,30 @@ Page({
    */
   onShareAppMessage: function () {
 
-  }
+  },
+    goods_info(pid){
+        return util.get(`/index/goods_info?ptypeId=${pid}`);
+    },
+
+    //计算商品
+    loadGoods(cartList) {
+        var totalAmount=0;
+        var goods=[];
+        var totalCount=0;
+        cartList.map(cartItem=>{
+            totalCount+=cartItem.count;
+            this.setData({totalCount:totalCount});
+
+            this.goods_info(cartItem.id).then(data=>{
+                console.log("then");
+                data=data.body.ent;
+                goods.push({id:data.typeId,good:data,count:cartItem.count});
+
+                totalAmount+=cartItem.count*data.PreBuyPrice1;
+                this.setData({goods: goods});
+                this.setData({totalAmount:totalAmount});
+            });
+        });
+
+    }
 })

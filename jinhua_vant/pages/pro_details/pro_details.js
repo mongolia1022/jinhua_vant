@@ -31,7 +31,8 @@ Page({
 
     //选择规格
     columns: ['500g*15包/箱', '600g*15包/箱', '700g*15包/箱', '800g*15包/箱', '900g*15包/箱'],
-      productData:{}
+      productData:{},
+      cartCount:0
   },
   /*banner*/
   swiperChange: function (e) {
@@ -88,18 +89,7 @@ Page({
    */
   onLoad: function (options) {
       this.goods_info(options.id);
-      //倒计时
-      let list = [
-        {
-          id: 1,
-          memberNickname: '列表1',
-          remainTime: 86400000
-        }
-      ];
-    this.setData({
-      listData: list
-    });
-    this.setCountDown();
+      this.resetCartCount(wx.getStorageSync("cartList"));
   },
 
   /*倒计时*/
@@ -193,10 +183,81 @@ Page({
   onShareAppMessage: function () {
 
   },
+    buy: function(e){
+        if (!this.check(this.data.productData)) {
+            wx.showToast({
+                title: '无法购买',
+                icon: 'none',
+                duration: 1000,
+            });
+        }
+
+        wx.navigateTo({url: `/pages/submit_order/submit_order?goods=${JSON.stringify([{id:this.data.productData.typeId,count:1}])}`})
+    },
+
     goods_info(pid){
         util.get(`/index/goods_info?ptypeId=${pid}`).then(data=>{
-            console.log(data.pic);
+          data=data.body.ent;
             this.setData({productData: data,slider:[data.pic]});
+
+            var date = data.promotion.end_time.substring(0,19)
+            date = date.substring(0,19);
+            date = date.replace(/-/g,'/');
+            var timestamp = new Date(date).getTime();
+            if(timestamp<=new Date().getTime()){
+                timestamp=0;
+            }
+            //倒计时
+            let list = [
+                {
+                    id: 1,
+                    memberNickname: '列表1',
+                    remainTime: timestamp
+                }
+            ];
+            this.setData({
+                listData: list
+            });
+            this.setCountDown();
         });
+    },
+
+    check(productData) {
+        var date = productData.promotion.end_time.substring(0,19)
+        date = date.substring(0,19);
+        date = date.replace(/-/g,'/');
+        var timestamp = new Date(date).getTime();
+        if (timestamp <= new Date().getTime()) {
+            return false;
+        }
+
+        if(productData.Qty==0){
+            return false;
+        }
+    },
+    addCart(){
+        var {productData}=this.data;
+
+        var cartList = wx.getStorageSync("cartList")||[];
+        var exist=false;
+        cartList.map(cartItem=>{
+            if (cartItem.typeId == productData.typeId) {
+                cartItem.count+=1;
+                exist=true;
+            }
+        });
+        if(!exist){
+            cartList.push({id:productData.typeId, count: 1})
+        }
+        wx.setStorageSync("cartList",cartList);
+        this.resetCartCount(cartList);
+    },
+    resetCartCount(cartList){
+        var cartList = cartList||[];
+        var count=0;
+        cartList.map(cartItem=>{
+            count+=cartItem.count;
+        });
+        this.setData({cartCount:count})
     }
 })

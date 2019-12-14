@@ -56,7 +56,7 @@ Page({
       normal: 'https://www.jhjksp.com/img/nav5.png',
       active: 'https://www.jhjksp.com/img/nav5_2.png'
     },
-      ordersData:[]//订单列表
+      orders:[]//订单列表
   },
   /*底部导航*/
   onChange(event) {
@@ -165,9 +165,9 @@ Page({
   },
 
     user_order_list(btypeid,page=10){
-        util.get(`/user_order_list?btypeid=${btypeid}&page=${page}`).then(data=>{
+        util.get(`/index/user_order_list/btypeid/${btypeid}/page/2`).then(data=>{
             var list = data.body.list||[];
-            this.setData({ordersData: list});
+            this.setData({orders: list});
         });
     }
 })

@@ -17,7 +17,7 @@ Page({
   },
   /*开关*/
   onChange(e) {
-    console.log(e.target.dataset.name)
+    // console.log(e.target.dataset.name)
     this.setData({[e.target.dataset.name]:e.detail});
     // // 需要手动对 checked 状态进行更新
     // this.setData({ checked: e.detail });

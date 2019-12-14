@@ -28,9 +28,11 @@
 <swiper class="idx_entrance clear" indicator-dots='true' indicator-active-color='#ff645f'>
     <block wx:for="{{quick_entrance}}" wx:key="unique2">
     <swiper-item>
-      <li wx:for="{{item}}" bindtap="idxEntrance">
+      <li wx:for="{{item}}">
+          <navigator url="../products2/products2?cid={{item.typeId}}">
         <span class='circle' style='background-image:url({{item.icon}})'></span>
         <label>{{item.FullName}}</label>
+          </navigator>
       </li>
     </swiper-item>
     </block>
