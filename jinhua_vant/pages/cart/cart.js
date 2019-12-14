@@ -81,7 +81,7 @@ Page({
                   this.resetCartListCache(good);
               }
           });
-          this.resetTotalCount(goods)
+          this.resetTotalCount(goods);
       }
     this.setData({ show: false,goods:goods });
 
