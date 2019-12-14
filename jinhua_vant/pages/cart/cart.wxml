@@ -9,21 +9,21 @@
         <span class='iconfont icon-shanchu1'></span>
       </dt>
       <dd class='title'>{{item.good.FullName}}</dd>
-      <dd class='details'>100g*24 /箱 库存充足</dd>
+      <dd class='details'>{{item.good.Standard}} 库存{{item.good.Qty}}</dd>
       <dd class='coupon'>
         <span>满赠</span>
       </dd>
       <dd class='price clear'>
         <span>￥</span>
-        <label>1800</label>
-        <em>￥3000</em>
-        <view class="picker_num2 iconfont" bind:click="showPopup">
-          <van-cell class='cart_num' title='{{selectNum}}' bind:click="showPopup" /> 
+        <label>{{item.good.PreBuyPrice1*item.count}}</label>
+        <!--<em>￥3000</em>-->
+        <view class="picker_num2 iconfont">
+          <van-cell class='cart_num' title='{{item.count}}' bind:click="showPopup" data-item="{{item}}"/>
         </view>
       </dd>
-      <dd class='gray_font clear'>
+     <!-- <dd class='gray_font clear'>
         <span>特价:16元/盒(门店必须零售价:19.9元/盒活动)</span>
-      </dd>
+      </dd>-->
     </dl>
   </view>
   
@@ -36,8 +36,8 @@
     <button bind:tap='toSubmitOrder'>提交订单</button>
   </view>
   <view class="cart_b_m">
-    <span>合计:<font>￥3000.00</font></span>
-    <label>共6种115件商品</label>
+    <span>合计:<font>￥{{totalAmount}}</font></span>
+    <label>共{{goods.length}}种{{totalCount}}件商品</label>
   </view>
   <view class="cart_b_l">
     <van-checkbox value="{{ checked }}" bind:change="onSelectAll">全选</van-checkbox>

@@ -241,7 +241,7 @@ Page({
         var cartList = wx.getStorageSync("cartList")||[];
         var exist=false;
         cartList.map(cartItem=>{
-            if (cartItem.typeId == productData.typeId) {
+            if (cartItem.id == productData.typeId) {
                 cartItem.count+=1;
                 exist=true;
             }
