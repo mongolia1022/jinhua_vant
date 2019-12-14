@@ -33,7 +33,6 @@ Page({
     columns: ['500g*15包/箱', '600g*15包/箱', '700g*15包/箱', '800g*15包/箱', '900g*15包/箱'],
       productData:{},
       cartCount:0,
-      promotionMap:new Map([{1:"买赠"},{2:"满减"},{3:"买促"},{4:"每日特惠"},{5:"应季商品"},{6:"收藏商品"}])
   },
   /*banner*/
   swiperChange: function (e) {
@@ -75,7 +74,7 @@ Page({
     });
     this.setData({ show: false });
     this.setData({ specs: value });
-    
+
   },
   onCancel() {
     wx.showToast({
@@ -232,7 +231,7 @@ Page({
             return false;
         }
 
-        if(productData.Qty==0){
+        if(productData.Qty<1){
             return false;
         }
     },
@@ -243,12 +242,12 @@ Page({
         var exist=false;
         cartList.map(cartItem=>{
             if (cartItem.id == productData.typeId) {
-                cartItem.count+=1;
+                cartItem.count+=2;
                 exist=true;
             }
         });
         if(!exist){
-            cartList.push({id:productData.typeId, count: 1})
+            cartList.push({id:productData.typeId, count: 2})
         }
         wx.setStorageSync("cartList",cartList);
         this.resetCartCount(cartList);
